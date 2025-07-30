@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Supreme Info Consult</title>
+  <title>Supreme Info Consult – Ghana (SICG)</title>
   <style>
     body {
       margin: 0;
@@ -11,27 +11,63 @@
       background-color: #f3fff3;
       color: #222;
     }
+
     header {
-      background-color: #8a2be2; /* Violet */
+      background-color: #8a2be2;
       color: white;
-      padding: 30px 0;
-      text-align: center;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
     }
+
+    header img {
+      height: 60px;
+      width: auto;
+      border-radius: 8px;
+    }
+
+    header div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
     header h1 {
       margin: 0;
-      font-size: 2.2em;
+      font-size: 1.8em;
     }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.1em;
+    }
+
     nav {
-      background-color: #90ee90; /* Light green */
-      text-align: center;
-      padding: 12px 0;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 15px 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
+
     nav a {
-      color: #000;
-      margin: 0 15px;
-      font-weight: bold;
+      color: #8a2be2;
       text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      padding: 8px 12px;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
     }
+
+    nav a:hover {
+      color: #4CAF50; /* Green on hover */
+      border-bottom: 3px solid #4CAF50;
+    }
+
     section {
       max-width: 900px;
       margin: 30px auto;
@@ -40,12 +76,15 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
+
     section h2 {
       color: #8a2be2;
     }
+
     ul li {
       margin-bottom: 10px;
     }
+
     footer {
       background-color: #444;
       color: white;
@@ -53,6 +92,7 @@
       padding: 15px 0;
       margin-top: 40px;
     }
+
     a {
       color: #8a2be2;
     }
@@ -61,11 +101,15 @@
 <body>
 
   <header>
-    <h1>Supreme Info Consult</h1>
-    <p>Empowering Information Professionals in Ghana and Beyond</p>
+    <img src="logo.png" alt="Supreme Info Consult Logo" />
+    <div>
+      <h1>Supreme Info Consult – Ghana (SICG)</h1>
+      <p>Empowering Information Professionals in Ghana and Beyond</p>
+    </div>
   </header>
 
   <nav>
+    <a href="#">Home</a>
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#contact">Contact</a>
@@ -98,9 +142,8 @@
   </section>
 
   <footer>
-    &copy; 2025 Supreme Info Consult. All rights reserved.
+    &copy; 2025 Supreme Info Consult – Ghana (SICG). All rights reserved.
   </footer>
 
 </body>
 </html>
-  
