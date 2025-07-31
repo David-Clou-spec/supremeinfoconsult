@@ -16,12 +16,20 @@
       background: #6a1b9a;
       color: white;
       padding: 1em 2em;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
     header img {
-      max-height: 120px;
-      display: block;
-      margin: 0 auto 15px auto;
+      max-height: 70px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    header p {
+      margin: 5px 0 0 0;
+      font-size: 1rem;
     }
     nav {
       display: flex;
@@ -94,8 +102,10 @@
   <!-- Header -->
   <header>
     <img src="logo.png" alt="Supreme Info Consult Logo">
-    <h1>Supreme Info Consult – Ghana (SICG)</h1>
-    <p>Empowering Information Professionals in Ghana and Beyond</p>
+    <div>
+      <h1>Supreme Info Consult – Ghana (SICG)</h1>
+      <p>Empowering Information Professionals in Ghana and Beyond</p>
+    </div>
   </header>
 
   <!-- Navigation -->
