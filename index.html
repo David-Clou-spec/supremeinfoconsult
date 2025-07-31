@@ -14,15 +14,16 @@
       color: #333;
     }
 
-    /* Header with logo and title side by side */
+    /* Header aligned far left */
     header {
       background: #6a1b9a;
       color: white;
       padding: 1em 2em;
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: nowrap;       /* stay in one line */
+      justify-content: flex-start; /* Align content to far left */
+      gap: 10px;
+      flex-wrap: nowrap;
     }
     header img {
       max-height: 50px;
@@ -31,7 +32,7 @@
     header h1 {
       margin: 0;
       font-size: 1.3rem;
-      white-space: nowrap;     /* keep title in one line */
+      white-space: nowrap;
     }
     header p {
       margin: 0;
@@ -164,7 +165,7 @@
 
     @media (max-width: 768px) {
       header h1 {
-        font-size: 1rem; /* smaller font to fit on one line */
+        font-size: 1rem;
       }
       header p {
         font-size: 0.8rem;
