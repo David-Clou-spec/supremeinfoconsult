@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Supreme Info Consult - Ghana (SICG)</title>
+  <link rel="icon" type="image/png" href="logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -95,6 +96,13 @@
         font-size: 1.5rem;
         height: 200px;
       }
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      header img {
+        margin-bottom: 10px;
+      }
     }
   </style>
 </head>
@@ -115,6 +123,7 @@
     <a href="#executive-board">Executive Board</a>
     <a href="#services">Services</a>
     <a href="#training">Training</a>
+    <a href="#gallery">Gallery</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -199,6 +208,22 @@
     </div>
   </section>
 
+  <!-- Gallery Section -->
+  <section class="section" id="gallery">
+    <h2>Gallery</h2>
+    <div class="services">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Training 1" style="width:100%; border-radius:8px;">
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Workshop" style="width:100%; border-radius:8px;">
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Seminar" style="width:100%; border-radius:8px;">
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
   <section class="section contact" id="contact">
     <h2>Contact Us</h2>
@@ -210,5 +235,20 @@
   <footer class="footer">
     &copy; 2025 Supreme Info Consult – Ghana (SICG). All rights reserved.
   </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/233243221214" target="_blank" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  " title="Chat with us on WhatsApp">💬</a>
+
 </body>
 </html>
