@@ -7,35 +7,18 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background: #f9f9f9;
-      color: #333;
-    }
+    body { font-family: 'Poppins', sans-serif; margin: 0; background: #f9f9f9; color: #333; }
 
     header {
       background: #6a1b9a;
       color: white;
       padding: 1em 2em;
       display: flex;
-      flex-direction: column;
       align-items: flex-start;
     }
-    header img {
-      max-height: 50px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.3rem;
-      white-space: nowrap;
-    }
-    header p {
-      margin: 5px 0 0 0;
-      font-size: 0.95rem;
-      text-align: center;
-      width: 100%;
-    }
+    header img { max-height: 50px; }
+    header h1 { margin: 0; font-size: 1.3rem; white-space: nowrap; }
+    header p { margin: 5px 0 0 0; font-size: 0.95rem; text-align: left; }
 
     nav {
       background: #7b1fa2;
@@ -52,107 +35,56 @@
       padding: 1em;
       margin: 0;
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-    }
+    nav a { color: white; text-decoration: none; font-weight: 600; }
     .menu-toggle {
       display: none;
-      background: #7b1fa2;
-      color: white;
-      border: none;
-      font-size: 1.5rem;
-      padding: 10px;
-      cursor: pointer;
-      width: 100%;
-      text-align: right;
+      background: #7b1fa2; color: white; border: none; font-size: 1.5rem;
+      padding: 10px; cursor: pointer; width: 100%; text-align: right;
     }
 
     .hero-slider {
-      position: relative;
-      height: 250px;
-      overflow: hidden;
+      position: relative; height: 250px; overflow: hidden;
     }
     .hero-slider .slide {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 1s ease-in-out;
     }
-    .hero-slider .slide.active {
-      opacity: 1;
-    }
+    .hero-slider .slide.active { opacity: 1; }
     .hero-slider .hero-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
+      position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
+      color: white; font-size: 1.5rem; font-weight: bold;
       text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-      text-align: center;
-      padding: 0 1em;
+      text-align: center; padding: 0 1em;
     }
 
-    .section {
-      padding: 2em;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .section h2 {
-      color: #6a1b9a;
-      margin-bottom: 1em;
-    }
+    .section { padding: 2em; max-width: 1000px; margin: auto; }
+    .section h2 { color: #6a1b9a; margin-bottom: 1em; }
     .services, .training-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5em;
     }
     .card {
-      background: white;
-      padding: 1.5em;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: white; padding: 1.5em;
+      border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
-    .footer {
-      background: #6a1b9a;
-      color: white;
-      padding: 1em;
-      text-align: center;
-    }
+    .footer { background: #6a1b9a; color: white; padding: 1em; text-align: center; }
 
-    .contact a {
-      color: #6a1b9a;
-      text-decoration: none;
-    }
+    .contact a { color: #6a1b9a; text-decoration: none; }
 
     html { scroll-behavior: smooth; }
 
     .floating-buttons {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 1000;
+      position: fixed; bottom: 20px; right: 20px;
+      display: flex; flex-direction: column; gap: 10px; z-index: 1000;
     }
     .floating-buttons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      color: white;
-      font-size: 24px;
-      text-decoration: none;
+      display: flex; align-items: center; justify-content: center;
+      width: 50px; height: 50px; border-radius: 50%;
+      color: white; font-size: 24px; text-decoration: none;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       animation: pulse 2s infinite;
     }
@@ -166,44 +98,19 @@
     .linkedin-btn { background: #0077B5; }
 
     #backToTop {
-      display: none;
-      position: fixed;
-      bottom: 80px;
-      right: 25px;
-      z-index: 1000;
-      font-size: 18px;
-      background: #6a1b9a;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      cursor: pointer;
+      display: none; position: fixed; bottom: 80px; right: 25px;
+      z-index: 1000; font-size: 18px; background: #6a1b9a; color: white;
+      border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer;
     }
 
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 1rem;
-      }
-      header p {
-        font-size: 0.8rem;
-      }
-      .menu-toggle {
-        display: block;
-      }
-      nav ul {
-        display: none;
-        flex-direction: column;
-        padding: 0;
-      }
-      nav ul.show {
-        display: flex;
-      }
-      .hero-slider {
-        height: 200px;
-      }
-      .hero-slider .hero-text {
-        font-size: 1.2rem;
-      }
+      header h1 { font-size: 1rem; }
+      header p { font-size: 0.8rem; }
+      .menu-toggle { display: block; }
+      nav ul { display: none; flex-direction: column; padding: 0; }
+      nav ul.show { display: flex; }
+      .hero-slider { height: 200px; }
+      .hero-slider .hero-text { font-size: 1.2rem; }
     }
   </style>
 </head>
@@ -211,9 +118,11 @@
   <header>
     <div style="display:flex; align-items:center; gap:10px;">
       <img src="logo.png" alt="Supreme Info Consult Logo">
-      <h1>Supreme Info Consult – Ghana</h1>
+      <div>
+        <h1>Supreme Info Consult – Ghana</h1>
+        <p>Talent Enhancement</p>
+      </div>
     </div>
-    <p>Talent Enhancement</p>
   </header>
 
   <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
@@ -224,7 +133,6 @@
       <li><a href="#executive-board">Executive Board</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#training">Training</a></li>
-      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#newsletter">Newsletter</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -243,6 +151,7 @@
     <p>Supreme Info Consult is dedicated to advancing the skills and impact of information professionals including librarians, archivists, IT experts, tertiary students, and senior high school (SHS) students. We provide capacity-building opportunities and relevant training to help them stay current in the evolving world of information management.</p>
   </section>
 
+  <!-- Executive Board (only visible when clicked) -->
   <section class="section" id="executive-board">
     <h2>Executive Board</h2>
     <div class="services">
@@ -269,15 +178,6 @@
       <div class="card"><h3>Cataloguing Workshop</h3><p><strong>Date:</strong> 15th August 2025</p><p><strong>Venue:</strong> Accra</p></div>
       <div class="card"><h3>Archives Management & Digitization</h3><p><strong>Date:</strong> 22nd August 2025</p><p><strong>Venue:</strong> Sunyani</p></div>
       <div class="card"><h3>MS Excel for Librarians</h3><p><strong>Date:</strong> 30th August 2025</p><p><strong>Venue:</strong> Kumasi</p></div>
-    </div>
-  </section>
-
-  <section class="section" id="gallery">
-    <h2>Gallery</h2>
-    <div class="services">
-      <div class="card"><img src="https://via.placeholder.com/300x200" style="width:100%; border-radius:8px;"></div>
-      <div class="card"><img src="https://via.placeholder.com/300x200" style="width:100%; border-radius:8px;"></div>
-      <div class="card"><img src="https://via.placeholder.com/300x200" style="width:100%; border-radius:8px;"></div>
     </div>
   </section>
 
