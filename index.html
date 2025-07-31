@@ -83,7 +83,6 @@
   </style>
 </head>
 <body>
-
   <!-- Header -->
   <header>
     <h1>Supreme Info Consult – Ghana (SICG)</h1>
@@ -91,8 +90,9 @@
   </header>
 
   <!-- Navigation -->
-  <nav>
+  <nav id="navbar">
     <a href="#about">About</a>
+    <a href="#executive-board" id="exec-tab" style="display:none;">Executive Board</a>
     <a href="#services">Services</a>
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
@@ -109,6 +109,25 @@
     <p>
       Supreme Info Consult is dedicated to advancing the skills and impact of information professionals including librarians, archivists, IT experts, tertiary students, and senior high school (SHS) students. We provide capacity-building opportunities and relevant training to help them stay current in the evolving world of information management.
     </p>
+  </section>
+
+  <!-- Executive Board Section -->
+  <section class="section" id="executive-board">
+    <h2>Executive Board</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Ms. Victoria Aggor</h3>
+        <p>Founder (Training & Consulting Partner)</p>
+      </div>
+      <div class="card">
+        <h3>Mr. David Ameyaw</h3>
+        <p>Co - Founder (Systems Analyst)</p>
+      </div>
+      <div class="card">
+        <h3>Sena</h3>
+        <p>Secretary</p>
+      </div>
+    </div>
   </section>
 
   <!-- Services Section -->
@@ -172,5 +191,16 @@
     &copy; 2025 Supreme Info Consult – Ghana (SICG). All rights reserved.
   </footer>
 
+  <!-- JavaScript to show/hide Executive Board tab -->
+  <script>
+    window.addEventListener('scroll', () => {
+      const execTab = document.getElementById('exec-tab');
+      if (window.scrollY > 100) {
+        execTab.style.display = 'inline';
+      } else {
+        execTab.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
