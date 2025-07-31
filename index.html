@@ -18,7 +18,8 @@
     }
     header img { max-height: 50px; }
     header h1 { margin: 0; font-size: 1.3rem; white-space: nowrap; }
-    header p { margin: 5px 0 0 0; font-size: 0.95rem; text-align: left; }
+    /* Close gap between title and subtitle */
+    header p { margin: 2px 0 0 0; font-size: 0.95rem; text-align: left; }
 
     nav {
       background: #7b1fa2;
@@ -35,16 +36,14 @@
       padding: 1em;
       margin: 0;
     }
-    nav a { color: white; text-decoration: none; font-weight: 600; }
+    nav a { color: white; text-decoration: none; font-weight: 600; cursor:pointer; }
     .menu-toggle {
       display: none;
       background: #7b1fa2; color: white; border: none; font-size: 1.5rem;
       padding: 10px; cursor: pointer; width: 100%; text-align: right;
     }
 
-    .hero-slider {
-      position: relative; height: 250px; overflow: hidden;
-    }
+    .hero-slider { position: relative; height: 250px; overflow: hidden; }
     .hero-slider .slide {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       background-size: cover; background-position: center;
@@ -103,6 +102,17 @@
       border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer;
     }
 
+    /* Modal for Executive Board */
+    .modal {
+      display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5); justify-content: center; align-items: center;
+    }
+    .modal-content {
+      background: white; padding: 20px; border-radius: 10px; max-width: 400px; text-align: center;
+    }
+    .modal-content h2 { color: #6a1b9a; }
+    .close-btn { margin-top: 15px; padding: 8px 15px; background: #6a1b9a; color: white; border: none; cursor: pointer; border-radius: 5px; }
+
     @media (max-width: 768px) {
       header h1 { font-size: 1rem; }
       header p { font-size: 0.8rem; }
@@ -130,7 +140,7 @@
     <ul id="menu">
       <li><a href="#">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#executive-board">Executive Board</a></li>
+      <li><a onclick="openModal()">Executive Board</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#training">Training</a></li>
       <li><a href="#newsletter">Newsletter</a></li>
@@ -149,16 +159,6 @@
   <section class="section" id="about">
     <h2>About Us</h2>
     <p>Supreme Info Consult is dedicated to advancing the skills and impact of information professionals including librarians, archivists, IT experts, tertiary students, and senior high school (SHS) students. We provide capacity-building opportunities and relevant training to help them stay current in the evolving world of information management.</p>
-  </section>
-
-  <!-- Executive Board (only visible when clicked) -->
-  <section class="section" id="executive-board">
-    <h2>Executive Board</h2>
-    <div class="services">
-      <div class="card"><h3>Ms. Victoria Aggor</h3><p>Founder (Training & Consulting Partner)</p></div>
-      <div class="card"><h3>Mr. David Ameyaw</h3><p>Co - Founder (Systems Analyst)</p></div>
-      <div class="card"><h3>Sena</h3><p>Secretary</p></div>
-    </div>
   </section>
 
   <section class="section" id="services">
@@ -182,60 +182,4 @@
   </section>
 
   <section class="section" id="newsletter">
-    <h2>Subscribe to Our Newsletter</h2>
-    <p>Get updates about training, workshops, and events directly to your inbox.</p>
-    <form>
-      <input type="email" placeholder="Enter your email" required style="padding:10px; width:250px; border-radius:5px; border:1px solid #ccc;">
-      <button type="submit" style="padding:10px 15px; background:#6a1b9a; color:white; border:none; border-radius:5px; cursor:pointer;">Subscribe</button>
-    </form>
-  </section>
-
-  <section class="section contact" id="contact">
-    <h2>Contact Us</h2>
-    <p><strong>Email:</strong> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
-    <p><strong>WhatsApp:</strong> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
-  </section>
-
-  <footer class="footer">
-    &copy; 2025 Supreme Info Consult – Ghana. All rights reserved.
-  </footer>
-
-  <div class="floating-buttons">
-    <a href="https://wa.me/233243221214" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">💬</a>
-    <a href="mailto:supremeinfoconsult@gmail.com" class="email-btn" title="Send Email">✉️</a>
-    <a href="https://www.linkedin.com" target="_blank" class="linkedin-btn" title="LinkedIn">in</a>
-  </div>
-
-  <button id="backToTop" onclick="scrollToTop()">↑ Top</button>
-
-  <script>
-    function toggleMenu() {
-      document.getElementById('menu').classList.toggle('show');
-    }
-
-    let slides = document.querySelectorAll('.hero-slider .slide');
-    let currentIndex = 0;
-    function showSlide(index) {
-      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-    }
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }
-    showSlide(currentIndex);
-    setInterval(nextSlide, 7000);
-
-    const backToTop = document.getElementById("backToTop");
-    window.onscroll = function() {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        backToTop.style.display = "block";
-      } else {
-        backToTop.style.display = "none";
-      }
-    };
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
-</body>
-</html>
+    <
