@@ -39,7 +39,6 @@
     color: #f0e6f7;
   }
 
-  /* NAVIGATION */
   nav {
     background: #7b1fa2;
     padding: 1em;
@@ -69,7 +68,6 @@
     font-weight: 600;
   }
 
-  /* HERO SLIDER */
   .hero-slider {
     position: relative;
     height: 300px;
@@ -191,17 +189,16 @@
 
   /* Mobile styles */
   @media (max-width: 768px) {
-    /* header: keep logo + title + subtitle in one line */
     header {
       flex-wrap: nowrap;
       gap: 12px;
     }
     header div {
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 8px;
-      line-height: 1;
+      flex-direction: column; /* stack title and subtitle */
+      align-items: flex-start; /* left align */
+      line-height: 1.1;
+      gap: 0; /* remove extra space */
     }
     header h1 {
       font-size: 1rem;
@@ -210,11 +207,10 @@
     }
     header p {
       font-size: 0.8rem;
-      margin: 0;
+      margin: 0; /* tight under the title */
       white-space: nowrap;
     }
 
-    /* nav */
     .nav-links {
       display: none;
       flex-direction: column;
