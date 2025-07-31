@@ -152,13 +152,15 @@
     }
     .whatsapp-btn { background: #25D366; }
     .email-btn { background: #d44638; }
+
     @media (max-width: 768px) {
       header {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row; /* Keep logo and title side by side on mobile */
+        justify-content: center;
+        text-align: left;
       }
       header img {
-        margin-bottom: 10px;
+        margin-bottom: 0;
       }
       .menu-toggle {
         display: block;
