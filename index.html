@@ -19,14 +19,18 @@
       padding: 1em 2em;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 8px;
     }
     header img {
       max-height: 60px;
     }
     header h1 {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
+    }
+    header p {
+      margin: 0;
+      font-size: 1rem;
     }
     nav {
       background: #7b1fa2;
@@ -45,7 +49,6 @@
       text-decoration: none;
       font-weight: 600;
     }
-
     .menu-toggle {
       display: none;
       background: #7b1fa2;
@@ -57,7 +60,6 @@
       width: 100%;
       text-align: right;
     }
-
     .hero-slider {
       position: relative;
       height: 250px;
@@ -87,7 +89,6 @@
       text-align: center;
       padding: 0 1em;
     }
-
     .section {
       padding: 2em;
       max-width: 1000px;
@@ -121,7 +122,36 @@
     html {
       scroll-behavior: smooth;
     }
-
+    /* Floating contact buttons */
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+    }
+    .floating-buttons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .whatsapp-btn { background: #25D366; }
+    .email-btn { background: #d44638; }
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -155,7 +185,7 @@
     <img src="logo.png" alt="Supreme Info Consult Logo">
     <div>
       <h1>Supreme Info Consult – Ghana (SICG)</h1>
-      <p>Empowering Information Professionals</p>
+      <p>Empowering Information Professionals Globally</p>
     </div>
   </header>
 
@@ -182,7 +212,6 @@
     <div class="hero-text">Shaping Future Information Professionals</div>
   </div>
 
-  <!-- Sections -->
   <section class="section" id="about">
     <h2>About Us</h2>
     <p>Supreme Info Consult is dedicated to advancing the skills and impact of information professionals including librarians, archivists, IT experts, tertiary students, and senior high school (SHS) students. We provide capacity-building opportunities and relevant training to help them stay current in the evolving world of information management.</p>
@@ -243,25 +272,25 @@
 
   <footer class="footer">&copy; 2025 Supreme Info Consult – Ghana (SICG). All rights reserved.</footer>
 
+  <!-- Floating buttons -->
+  <div class="floating-buttons">
+    <a href="https://wa.me/233243221214" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">💬</a>
+    <a href="mailto:supremeinfoconsult@gmail.com" class="email-btn" title="Send Email">✉️</a>
+  </div>
+
   <script>
     function toggleMenu() {
       document.getElementById('menu').classList.toggle('show');
     }
-
     let slides = document.querySelectorAll('.hero-slider .slide');
     let currentIndex = 0;
-
     function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
     }
-
     function nextSlide() {
       currentIndex = (currentIndex + 1) % slides.length;
       showSlide(currentIndex);
     }
-
     showSlide(currentIndex);
     setInterval(nextSlide, 7000);
   </script>
