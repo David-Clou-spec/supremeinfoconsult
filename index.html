@@ -46,7 +46,6 @@
       font-weight: 600;
     }
 
-    /* Mobile menu button */
     .menu-toggle {
       display: none;
       background: #7b1fa2;
@@ -59,7 +58,6 @@
       text-align: right;
     }
 
-    /* Hero slider */
     .hero-slider {
       position: relative;
       height: 250px;
@@ -124,7 +122,6 @@
       scroll-behavior: smooth;
     }
 
-    /* Responsive for small screens */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -154,7 +151,6 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <img src="logo.png" alt="Supreme Info Consult Logo">
     <div>
@@ -163,10 +159,8 @@
     </div>
   </header>
 
-  <!-- Mobile menu toggle button -->
   <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
 
-  <!-- Navigation -->
   <nav>
     <ul id="menu">
       <li><a href="#">Home</a></li>
@@ -180,45 +174,6 @@
     </ul>
   </nav>
 
-  <!-- Hero Slider -->
   <div class="hero-slider">
     <div class="slide" style="background-image: url('https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress');"></div>
-    <div class="slide" style="background-image: url('https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress');"></div>
-    <div class="slide" style="background-image: url('https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress');"></div>
-    <div class="slide" style="background-image: url('https://images.pexels.com/photos/4491461/pexels-photo-4491461.jpeg?auto=compress');"></div>
-    <div class="hero-text">Shaping Future Information Professionals</div>
-  </div>
-
-  <!-- Content sections (same as before)... -->
-
-  <!-- Footer -->
-  <footer class="footer">
-    &copy; 2025 Supreme Info Consult – Ghana (SICG)
-  </footer>
-
-  <script>
-    // Menu toggle
-    function toggleMenu() {
-      document.getElementById('menu').classList.toggle('show');
-    }
-
-    // Hero slider
-    let slides = document.querySelectorAll('.hero-slider .slide');
-    let currentIndex = 0;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-    }
-
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }
-
-    showSlide(currentIndex);
-    setInterval(nextSlide, 7000);
-  </script>
-</body>
-</html>
+    <div class="slide"
