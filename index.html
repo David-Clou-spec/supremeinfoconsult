@@ -13,6 +13,8 @@
       background: #f9f9f9;
       color: #333;
     }
+
+    /* Header with logo and title side by side */
     header {
       background: #6a1b9a;
       color: white;
@@ -20,18 +22,22 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-wrap: nowrap;       /* stay in one line */
     }
     header img {
-      max-height: 60px;
+      max-height: 50px;
+      flex-shrink: 0;
     }
     header h1 {
       margin: 0;
-      font-size: 1.6rem;
+      font-size: 1.3rem;
+      white-space: nowrap;     /* keep title in one line */
     }
     header p {
       margin: 0;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
+
     nav {
       background: #7b1fa2;
     }
@@ -60,6 +66,7 @@
       width: 100%;
       text-align: right;
     }
+
     .hero-slider {
       position: relative;
       height: 250px;
@@ -89,6 +96,7 @@
       text-align: center;
       padding: 0 1em;
     }
+
     .section {
       padding: 2em;
       max-width: 1000px;
@@ -109,6 +117,7 @@
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
+
     .footer {
       background: #6a1b9a;
       color: white;
@@ -119,9 +128,9 @@
       color: #6a1b9a;
       text-decoration: none;
     }
-    html {
-      scroll-behavior: smooth;
-    }
+
+    html { scroll-behavior: smooth; }
+
     /* Floating contact buttons */
     .floating-buttons {
       position: fixed;
@@ -154,13 +163,11 @@
     .email-btn { background: #d44638; }
 
     @media (max-width: 768px) {
-      header {
-        flex-direction: row; /* Keep logo and title side by side on mobile */
-        justify-content: center;
-        text-align: left;
+      header h1 {
+        font-size: 1rem; /* smaller font to fit on one line */
       }
-      header img {
-        margin-bottom: 0;
+      header p {
+        font-size: 0.8rem;
       }
       .menu-toggle {
         display: block;
@@ -192,7 +199,6 @@
   </header>
 
   <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
-
   <nav>
     <ul id="menu">
       <li><a href="#">Home</a></li>
@@ -274,7 +280,6 @@
 
   <footer class="footer">&copy; 2025 Supreme Info Consult – Ghana (SICG). All rights reserved.</footer>
 
-  <!-- Floating buttons -->
   <div class="floating-buttons">
     <a href="https://wa.me/233243221214" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">💬</a>
     <a href="mailto:supremeinfoconsult@gmail.com" class="email-btn" title="Send Email">✉️</a>
