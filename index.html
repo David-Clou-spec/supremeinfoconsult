@@ -45,6 +45,7 @@
       text-decoration: none;
       font-weight: 600;
     }
+
     .menu-toggle {
       display: none;
       background: #7b1fa2;
@@ -56,6 +57,7 @@
       width: 100%;
       text-align: right;
     }
+
     .hero-slider {
       position: relative;
       height: 250px;
@@ -85,6 +87,7 @@
       text-align: center;
       padding: 0 1em;
     }
+
     .section {
       padding: 2em;
       max-width: 1000px;
@@ -118,6 +121,7 @@
     html {
       scroll-behavior: smooth;
     }
+
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -154,7 +158,9 @@
       <p>Empowering Information Professionals</p>
     </div>
   </header>
+
   <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+
   <nav>
     <ul id="menu">
       <li><a href="#">Home</a></li>
@@ -210,6 +216,7 @@
       <div class="card"><h3>MS Excel for Librarians</h3><p><strong>Date:</strong> 30th August 2025</p><p><strong>Venue:</strong> Kumasi</p></div>
     </div>
   </section>
+
   <section class="section" id="gallery">
     <h2>Gallery</h2>
     <div class="services">
@@ -218,6 +225,7 @@
       <div class="card"><img src="https://via.placeholder.com/300x200" style="width:100%; border-radius:8px;"></div>
     </div>
   </section>
+
   <section class="section" id="newsletter">
     <h2>Subscribe to Our Newsletter</h2>
     <p>Get updates about training, workshops, and events directly to your inbox.</p>
@@ -226,16 +234,20 @@
       <button type="submit" style="padding:10px 15px; background:#6a1b9a; color:white; border:none; border-radius:5px; cursor:pointer;">Subscribe</button>
     </form>
   </section>
+
   <section class="section contact" id="contact">
     <h2>Contact Us</h2>
     <p><strong>Email:</strong> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
     <p><strong>WhatsApp:</strong> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
   </section>
+
   <footer class="footer">&copy; 2025 Supreme Info Consult – Ghana (SICG). All rights reserved.</footer>
+
   <script>
     function toggleMenu() {
       document.getElementById('menu').classList.toggle('show');
     }
+
     let slides = document.querySelectorAll('.hero-slider .slide');
     let currentIndex = 0;
 
@@ -244,10 +256,12 @@
         slide.classList.toggle('active', i === index);
       });
     }
+
     function nextSlide() {
       currentIndex = (currentIndex + 1) % slides.length;
       showSlide(currentIndex);
     }
+
     showSlide(currentIndex);
     setInterval(nextSlide, 7000);
   </script>
