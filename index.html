@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Supreme Info Consult - Ghana (SICG)</title>
+  <title>Supreme Info Consult - Ghana</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -14,21 +14,18 @@
       color: #333;
     }
 
-    /* FORCE logo + title far left */
     header {
       background: #6a1b9a;
       color: white;
       padding: 1em 2em;
-      display: flex !important;
-      flex-direction: row !important;
-      align-items: center !important;
-      justify-content: flex-start !important; /* Force far left */
-      text-align: left !important;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
       gap: 10px;
     }
     header img {
       max-height: 50px;
-      flex-shrink: 0;
     }
     header h1 {
       margin: 0;
@@ -42,6 +39,9 @@
 
     nav {
       background: #7b1fa2;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     nav ul {
       display: flex;
@@ -69,6 +69,7 @@
       text-align: right;
     }
 
+    /* Slider */
     .hero-slider {
       position: relative;
       height: 250px;
@@ -126,6 +127,7 @@
       padding: 1em;
       text-align: center;
     }
+
     .contact a {
       color: #6a1b9a;
       text-decoration: none;
@@ -133,7 +135,7 @@
 
     html { scroll-behavior: smooth; }
 
-    /* Floating contact buttons */
+    /* Floating buttons */
     .floating-buttons {
       position: fixed;
       bottom: 20px;
@@ -163,12 +165,28 @@
     }
     .whatsapp-btn { background: #25D366; }
     .email-btn { background: #d44638; }
+    .linkedin-btn { background: #0077B5; }
+
+    /* Back to top button */
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 25px;
+      z-index: 1000;
+      font-size: 18px;
+      background: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
     @media (max-width: 768px) {
       header {
-        flex-wrap: nowrap !important;
-        justify-content: flex-start !important;
-        text-align: left !important;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
       }
       header h1 {
         font-size: 1rem;
@@ -200,8 +218,8 @@
   <header>
     <img src="logo.png" alt="Supreme Info Consult Logo">
     <div>
-      <h1>Supreme Info Consult – Ghana (SICG)</h1>
-      <p>Empowering Information Professionals Globally</p>
+      <h1>Supreme Info Consult – Ghana</h1>
+      <p>Talent Enhancement</p>
     </div>
   </header>
 
@@ -285,17 +303,24 @@
     <p><strong>WhatsApp:</strong> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
   </section>
 
-  <footer class="footer">&copy; 2025 Supreme Info Consult – Ghana (SICG). All rights reserved.</footer>
+  <footer class="footer">
+    &copy; 2025 Supreme Info Consult – Ghana. All rights reserved.
+  </footer>
 
   <div class="floating-buttons">
     <a href="https://wa.me/233243221214" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">💬</a>
     <a href="mailto:supremeinfoconsult@gmail.com" class="email-btn" title="Send Email">✉️</a>
+    <a href="https://www.linkedin.com" target="_blank" class="linkedin-btn" title="LinkedIn">in</a>
   </div>
+
+  <button id="backToTop" onclick="scrollToTop()">↑ Top</button>
 
   <script>
     function toggleMenu() {
       document.getElementById('menu').classList.toggle('show');
     }
+
+    // Slider
     let slides = document.querySelectorAll('.hero-slider .slide');
     let currentIndex = 0;
     function showSlide(index) {
@@ -307,6 +332,19 @@
     }
     showSlide(currentIndex);
     setInterval(nextSlide, 7000);
+
+    // Back to top
+    const backToTop = document.getElementById("backToTop");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        backToTop.style.display = "block";
+      } else {
+        backToTop.style.display = "none";
+      }
+    };
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   </script>
 </body>
 </html>
