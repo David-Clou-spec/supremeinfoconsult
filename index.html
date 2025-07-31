@@ -246,17 +246,18 @@
   </div>
 </nav>
 
+<!-- Fixed slider with reliable images -->
 <div class="hero-slider">
-  <div class="slide" style="background-image:url('https://source.unsplash.com/1600x600/?library,education');">
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&cs=tinysrgb&w=1600');">
     Shaping Future Information Professionals
   </div>
-  <div class="slide" style="background-image:url('https://source.unsplash.com/1600x600/?technology,teamwork');">
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1600');">
     Innovating Knowledge
   </div>
-  <div class="slide" style="background-image:url('https://source.unsplash.com/1600x600/?training,workshop');">
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1600');">
     Capacity Building
   </div>
-  <div class="slide" style="background-image:url('https://source.unsplash.com/1600x600/?students,learning');">
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600');">
     Skills for the Future
   </div>
 </div>
@@ -316,7 +317,7 @@
 </div>
 
 <script>
-  // Slider
+window.onload = function() {
   const slides = document.querySelectorAll('.hero-slider .slide');
   let currentIndex = 0;
   function showSlide(index) {
@@ -329,27 +330,18 @@
   showSlide(currentIndex);
   setInterval(nextSlide, 7000);
 
-  // Back to top
   const backToTop = document.getElementById("backToTop");
-  window.onscroll = () => {
+  window.addEventListener('scroll', () => {
     backToTop.style.display = window.scrollY > 50 ? "block" : "none";
-  };
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  });
+  window.scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Modal
-  function openModal() {
-    document.getElementById('execModal').style.display = 'flex';
-  }
-  function closeModal() {
-    document.getElementById('execModal').style.display = 'none';
-  }
+  window.openModal = () => document.getElementById('execModal').style.display = 'flex';
+  window.closeModal = () => document.getElementById('execModal').style.display = 'none';
   window.addEventListener('click', e => {
     if (e.target == document.getElementById('execModal')) closeModal();
   });
 
-  // Menu toggle
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => {
@@ -357,6 +349,7 @@
     navToggle.setAttribute('aria-expanded', !expanded);
     navLinks.classList.toggle('show');
   });
+};
 </script>
 </body>
 </html>
