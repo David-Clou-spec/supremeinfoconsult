@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Supreme Info Consult – Ghana</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
   body {
     font-family: 'Poppins', sans-serif;
@@ -26,11 +28,12 @@
     width: 50px;
   }
   header div {
-    line-height: 1.2;
+    line-height: 1.1;
   }
   header h1 {
     font-size: 1.4rem;
     margin: 0;
+    white-space: nowrap;
   }
   header p {
     margin: 0;
@@ -62,6 +65,23 @@
     text-decoration: none;
     font-weight: 600;
   }
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .search-bar input {
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+  }
+  .search-bar button {
+    background: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 8px;
+  }
   .hero-slider {
     position: relative;
     height: 500px;
@@ -89,19 +109,19 @@
     opacity: 1;
   }
   .section {
-    padding: 1em;
+    padding: 1.5em;
     max-width: 1000px;
     margin: auto;
   }
   .section h2 {
     color: #6a1b9a;
-    margin-bottom: 0.5em;
-    font-size: 1.2rem;
+    margin-bottom: 0.7em;
+    font-size: 1.4rem;
   }
   .services, .training-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1em;
+    gap: 1.2em;
   }
   .card {
     background: white;
@@ -198,37 +218,23 @@
     font-size: 24px;
     cursor: pointer;
   }
-
-  /* MOBILE FIX */
   @media (max-width: 768px) {
+    .hero-slider { height: 400px; }
     header {
       flex-wrap: nowrap;
       gap: 8px;
     }
-    header img {
-      height: 40px;
-      width: 40px;
-    }
     header div {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: flex-start;
-      gap: 0;
-      line-height: 1.1;
+      line-height: 1.05;
     }
     header h1 {
       font-size: 1rem;
-      margin: 0;
-      white-space: nowrap;
     }
     header p {
-      font-size: 0.75rem;
-      margin: 0;
-      white-space: nowrap;
-    }
-    .hero-slider {
-      height: 400px;
+      font-size: 0.8rem;
     }
     .nav-links {
       display: none;
@@ -246,6 +252,10 @@
     }
     #navToggle {
       display: block;
+    }
+    .search-bar {
+      margin-top: 10px;
+      padding: 0 1em;
     }
     nav {
       padding: 0.8em 1.5em;
@@ -270,6 +280,10 @@
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search...">
+      <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+    </div>
   </div>
 </nav>
 
@@ -292,6 +306,16 @@
 <section class="section" id="about">
   <h2>About Us</h2>
   <p>Supreme Info Consult – Ghana (SICG) is committed to enhancing the skills and impact of information professionals, including librarians, archivists, systems analysts, database administrators, and IT experts. We also provide basic IT training programs for tertiary and senior high school students.</p>
+</section>
+
+<section class="section" id="vision">
+  <h2>Vision</h2>
+  <p>To be a leading hub for empowering information professionals and students in Ghana and beyond.</p>
+</section>
+
+<section class="section" id="mission">
+  <h2>Mission</h2>
+  <p>To deliver practical consulting and training that builds skills, confidence, and innovation in libraries, archives, IT, and education.</p>
 </section>
 
 <section class="section" id="services">
@@ -345,20 +369,20 @@
 </section>
 
 <section class="section contact" id="contact">
-  <h2>Contact</h2>
-  <p>📍 <span class="locations">Accra, Kumasi & Sunyani, Ghana</span></p>
-  <p>✉ <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
-  <p>💬 <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
+  <h2>Contact Us</h2>
+  <p><i class="fas fa-map-marker-alt"></i> <span class="locations">Accra, Kumasi & Sunyani, Ghana</span></p>
+  <p><i class="fas fa-envelope"></i> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
+  <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
 </section>
 
 <footer class="footer">
-  &copy; 2025 Supreme Info Consult – Ghana. All rights reserved. | Developed by: David Ameyaw (Systems Analyst)
+  &copy; 2025 Supreme Info Consult – Ghana. Developed by: David Ameyaw (Systems Analyst)
 </footer>
 
 <div class="floating-icons">
-  <a href="https://wa.me/233243221214">💬</a>
-  <a href="mailto:supremeinfoconsult@gmail.com" class="email">✉</a>
-  <a href="https://linkedin.com" class="linkedin">in</a>
+  <a href="https://wa.me/233243221214"><i class="fab fa-whatsapp"></i></a>
+  <a href="mailto:supremeinfoconsult@gmail.com" class="email"><i class="fas fa-envelope"></i></a>
+  <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin"></i></a>
 </div>
 
 <button onclick="scrollToTop()" id="backToTop">↑</button>
@@ -407,6 +431,16 @@ window.onload = function() {
     navLinks.classList.toggle('show');
   });
 };
+
+function performSearch() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  if (!query) {
+    alert("Please enter a search term");
+    return;
+  }
+  const content = document.body.innerText.toLowerCase();
+  alert(content.includes(query) ? `Results found for "${query}"` : `No results found for "${query}"`);
+}
 </script>
 </body>
 </html>
