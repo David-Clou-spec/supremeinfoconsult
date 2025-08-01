@@ -12,7 +12,6 @@
     background: #f9f9f9;
     color: #333;
   }
-
   header {
     background: #6a1b9a;
     color: white;
@@ -38,18 +37,11 @@
     font-size: 0.9rem;
     color: #f0e6f7;
   }
-
   nav {
     background: #7b1fa2;
     padding: 1em;
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
   }
-
   #navToggle {
     display: none;
     font-size: 24px;
@@ -59,42 +51,44 @@
     cursor: pointer;
     padding: 0 0.5em;
   }
-
   .nav-links {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1.5em;
-    align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: center;
   }
-
   .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 600;
   }
-
   .search-box {
     display: flex;
     align-items: center;
-    gap: 0.5em;
-    background: white;
-    border-radius: 20px;
-    padding: 0.2em 0.8em;
+    gap: 5px;
   }
-
   .search-box input {
+    padding: 4px 8px;
+    border-radius: 4px;
     border: none;
-    outline: none;
-    font-size: 0.9rem;
   }
-
+  .search-box button {
+    padding: 5px 10px;
+    background: #4a148c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
   .hero-slider {
     position: relative;
     height: 500px;
     overflow: hidden;
   }
-
+  @media (max-width: 768px) {
+    .hero-slider { height: 400px; }
+  }
   .hero-slider .slide {
     position: absolute;
     width: 100%;
@@ -116,32 +110,30 @@
   .hero-slider .slide.active {
     opacity: 1;
   }
-
   .section {
-    padding: 1em 1.5em;
+    padding: 0.8em;
     max-width: 1000px;
     margin: auto;
   }
-
   .section h2 {
     color: #6a1b9a;
-    margin-bottom: 0.8em;
+    margin-bottom: 0.3em;
   }
-
+  .section p {
+    margin: 0.3em 0;
+  }
   .services, .training-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.2em;
+    gap: 0.8em;
   }
-
   .card {
     background: white;
-    padding: 1.2em;
+    padding: 1.5em;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     text-align: center;
   }
-
   .icon-circle {
     width: 70px;
     height: 70px;
@@ -150,31 +142,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 10px auto;
+    margin: 0 auto 15px auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   }
   .icon-circle img {
     width: 36px;
     height: 36px;
   }
-
   .footer {
     background: #6a1b9a;
     color: white;
     padding: 1em;
     text-align: center;
   }
-
   .contact a {
     color: #6a1b9a;
     text-decoration: none;
   }
-
   .contact .locations {
     color: #6a1b9a;
     font-weight: 600;
   }
-
   .floating-icons {
     position: fixed;
     bottom: 20px;
@@ -183,7 +171,6 @@
     flex-direction: column;
     gap: 10px;
   }
-
   .floating-icons a {
     background: #25D366;
     color: white;
@@ -195,7 +182,6 @@
   }
   .floating-icons a.email { background: #d93025; }
   .floating-icons a.linkedin { background: #0A66C2; }
-
   #backToTop {
     display: none;
     position: fixed;
@@ -210,7 +196,6 @@
     font-size: 22px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
   }
-
   .modal {
     display: none;
     position: fixed;
@@ -225,7 +210,6 @@
     justify-content: center;
     align-items: center;
   }
-
   .modal-content {
     background: white;
     padding: 20px;
@@ -233,15 +217,24 @@
     max-width: 500px;
     text-align: center;
   }
-
   .close {
     float: right;
     font-size: 24px;
     cursor: pointer;
   }
-
   @media (max-width: 768px) {
-    .hero-slider { height: 400px; }
+    header {
+      flex-wrap: nowrap;
+      gap: 12px;
+    }
+    header div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.1;
+    }
+    header h1 { font-size: 1rem; white-space: nowrap; }
+    header p { font-size: 0.8rem; white-space: nowrap; }
     .nav-links {
       display: none;
       flex-direction: column;
@@ -256,7 +249,7 @@
     .nav-links.show { display: flex; }
     #navToggle { display: block; }
     nav { padding: 0.8em 1.5em; }
-    .search-box { margin-top: 0.5em; }
+    .search-box { justify-content: center; margin-top: 0.5em; }
   }
 </style>
 </head>
@@ -278,12 +271,13 @@
     <a href="#contact">Contact</a>
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
     <div class="search-box">
-      <input type="text" placeholder="Search..." />
-      🔍
+      <input type="text" id="searchInput" placeholder="Search..." />
+      <button onclick="performSearch()">Search</button>
     </div>
   </div>
 </nav>
 
+<!-- Hero slider -->
 <div class="hero-slider">
   <div class="slide" style="background-image:url('https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&cs=tinysrgb&w=1600');">
     Shaping Future Information Professionals
@@ -366,13 +360,13 @@
 
 <section class="section contact" id="contact">
   <h2>Contact Us</h2>
-  <p><b>Locations:</b> <span class="locations">Accra, Kumasi & Sunyani, Ghana</span></p>
   <p><b>Email:</b> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
   <p><b>WhatsApp:</b> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
 </section>
 
 <footer class="footer">
-  &copy; 2025 Supreme Info Consult – Ghana. Developed by: David Ameyaw (Systems Analyst). All rights reserved.
+  &copy; 2025 Supreme Info Consult – Ghana. All rights reserved.<br>
+  Developed By: David Ameyaw (Systems Analyst)
 </footer>
 
 <div class="floating-icons">
@@ -426,6 +420,15 @@ window.onload = function() {
     navToggle.setAttribute('aria-expanded', !expanded);
     navLinks.classList.toggle('show');
   });
+
+  window.performSearch = () => {
+    const value = document.getElementById('searchInput').value.trim();
+    if(value) {
+      alert('You searched for: ' + value);
+    } else {
+      alert('Please enter a search term.');
+    }
+  };
 };
 </script>
 </body>
