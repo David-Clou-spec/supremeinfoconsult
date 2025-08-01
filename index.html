@@ -56,46 +56,36 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5em;
-    align-items: center;
   }
   .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 600;
   }
-
-  /* Search box styling */
-  .search-box {
+  .search-bar {
     display: flex;
     align-items: center;
-    gap: 0.5em;
   }
-  .search-box input {
-    padding: 0.4em;
+  .search-bar input {
+    padding: 5px;
+    border-radius: 5px;
     border: none;
-    border-radius: 4px;
-    font-size: 1em;
+    outline: none;
   }
-  .search-box button {
+  .search-bar button {
+    padding: 5px 10px;
+    margin-left: 5px;
     background: white;
     color: #6a1b9a;
     border: none;
-    padding: 0.4em 0.6em;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: bold;
   }
-
-  /* Hero slider */
   .hero-slider {
     position: relative;
-    height: 500px; /* desktop/laptop */
+    height: 500px;
     overflow: hidden;
-  }
-  @media (max-width: 768px) {
-    .hero-slider {
-      height: 400px; /* mobile/tablet */
-    }
   }
   .hero-slider .slide {
     position: absolute;
@@ -109,7 +99,7 @@
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 2rem;
+    font-size: 1.6rem; /* smaller text */
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     padding: 0 1em;
@@ -119,18 +109,18 @@
     opacity: 1;
   }
   .section {
-    padding: 2em;
+    padding: 1em 2em;
     max-width: 1000px;
     margin: auto;
   }
   .section h2 {
     color: #6a1b9a;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
   }
   .services, .training-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5em;
+    gap: 1em;
   }
   .card {
     background: white;
@@ -269,6 +259,12 @@
     nav {
       padding: 0.8em 1.5em;
     }
+    .hero-slider {
+      height: 400px;
+    }
+    .hero-slider .slide {
+      font-size: 1.2rem; /* smaller text on mobile */
+    }
   }
 </style>
 </head>
@@ -289,13 +285,14 @@
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
-    <div class="search-box">
+    <div class="search-bar">
       <input type="text" placeholder="Search..." />
       <button>Search</button>
     </div>
   </div>
 </nav>
 
+<!-- Hero slider -->
 <div class="hero-slider">
   <div class="slide" style="background-image:url('https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&cs=tinysrgb&w=1600');">
     Shaping Future Information Professionals
@@ -318,16 +315,16 @@
 
 <section class="section" id="vision">
   <h2>Vision</h2>
-  <p>To be a leading hub for empowering information professionals and students in Ghana and beyond</p>
+  <p>To be a leading hub for empowering information professionals and students in Ghana and beyond.</p>
 </section>
 
 <section class="section" id="mission">
   <h2>Mission</h2>
-  <p>To deliver practical consulting and training that builds skills, confidence, and innovation in libraries, archives, IT, and education</p>
+  <p>To deliver practical consulting and training that builds skills, confidence, and innovation in libraries, archives, IT, and education.</p>
 </section>
 
 <section class="section" id="services">
-  <h2>Training & Consulting Services</h2>
+  <h2>Consulting Services</h2>
   <div class="services">
     <div class="card">
       <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/library.png" alt="Library Management"></div>
@@ -384,7 +381,7 @@
 </section>
 
 <footer class="footer">
-  &copy; 2025 Supreme Info Consult – Ghana. Developed By: David Ameyaw (Systems Analyst). All rights reserved.
+  &copy; 2025 Supreme Info Consult – Ghana. All rights reserved. Developed By: David Ameyaw (Systems Analyst)
 </footer>
 
 <div class="floating-icons">
