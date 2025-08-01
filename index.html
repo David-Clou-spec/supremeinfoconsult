@@ -56,6 +56,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5em;
+    align-items: center;
   }
   .nav-links a {
     color: white;
@@ -259,6 +260,12 @@
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
+
+    <!-- Search form -->
+    <form id="searchForm" style="display:flex;align-items:center;gap:5px;">
+      <input type="text" id="searchInput" placeholder="Search..." style="padding:5px;border-radius:5px;border:none;" />
+      <button type="submit" style="padding:5px 10px;background:#fff;color:#6a1b9a;font-weight:bold;border:none;border-radius:5px;cursor:pointer;">Search</button>
+    </form>
   </div>
 </nav>
 
@@ -284,7 +291,7 @@
 </section>
 
 <section class="section" id="services">
-  <h2>Consulting Services</h2>
+  <h2>Training & Consulting Services</h2>
   <div class="services">
     <div class="card">
       <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/library.png" alt="Library Management"></div>
@@ -394,6 +401,23 @@ window.onload = function() {
     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', !expanded);
     navLinks.classList.toggle('show');
+  });
+
+  // Search functionality
+  document.getElementById('searchForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const text = document.getElementById('searchInput').value.trim();
+    if (!text) return;
+
+    const oldMarks = document.querySelectorAll('mark');
+    oldMarks.forEach(mark => {
+      const parent = mark.parentNode;
+      parent.replaceChild(document.createTextNode(mark.textContent), mark);
+      parent.normalize();
+    });
+
+    const regex = new RegExp(`(${text})`, 'gi');
+    document.body.innerHTML = document.body.innerHTML.replace(regex, '<mark style="background:yellow;">$1</mark>');
   });
 };
 </script>
