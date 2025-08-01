@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Supreme Info Consult – Ghana</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
   body {
     font-family: 'Poppins', sans-serif;
@@ -13,6 +12,7 @@
     background: #f9f9f9;
     color: #333;
   }
+
   header {
     background: #6a1b9a;
     color: white;
@@ -22,31 +22,36 @@
     gap: 10px;
     flex-wrap: wrap;
   }
+
   header img {
     height: 50px;
     width: 50px;
   }
+
   header div {
     line-height: 1.2;
   }
+
   header h1 {
     font-size: 1.4rem;
     margin: 0;
   }
+
   header p {
     margin: 0;
     font-size: 0.9rem;
     color: #f0e6f7;
   }
+
   nav {
     background: #7b1fa2;
-    padding: 1em;
+    padding: 0.5em 1em;
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: space-between;
   }
+
   #navToggle {
     display: none;
     font-size: 24px;
@@ -54,33 +59,50 @@
     border: none;
     color: white;
     cursor: pointer;
-    padding: 0 0.5em;
   }
+
   .nav-links {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5em;
-    align-items: center;
+    flex: 1;
   }
+
   .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 600;
   }
-  .nav-links input[type="search"] {
-    padding: 5px 10px;
-    border-radius: 5px;
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .search-box input {
+    padding: 4px 8px;
+    border-radius: 4px;
     border: none;
   }
+
+  .search-box button {
+    padding: 4px 8px;
+    background: white;
+    color: #6a1b9a;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
   .hero-slider {
     position: relative;
     height: 500px;
     overflow: hidden;
   }
-  @media (max-width: 768px) {
-    .hero-slider { height: 400px; }
-  }
+
   .hero-slider .slide {
     position: absolute;
     width: 100%;
@@ -99,24 +121,29 @@
     padding: 0 1em;
     text-align: center;
   }
+
   .hero-slider .slide.active {
     opacity: 1;
   }
+
   .section {
-    padding: 1.5em 1em;
+    padding: 1.2em;
     max-width: 1000px;
     margin: auto;
   }
+
   .section h2 {
     color: #6a1b9a;
-    margin-bottom: 0.7em;
-    font-size: 1.4rem;
+    margin-bottom: 0.5em;
+    font-size: 1.3rem;
   }
+
   .services, .training-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1em;
+    gap: 1.5em;
   }
+
   .card {
     background: white;
     padding: 1.5em;
@@ -124,6 +151,7 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     text-align: center;
   }
+
   .icon-circle {
     width: 70px;
     height: 70px;
@@ -135,10 +163,12 @@
     margin: 0 auto 15px auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   }
+
   .icon-circle img {
     width: 36px;
     height: 36px;
   }
+
   .footer {
     background: #6a1b9a;
     color: white;
@@ -146,20 +176,30 @@
     text-align: center;
     font-size: 0.9rem;
   }
+
   .contact a {
     color: black;
     text-decoration: none;
   }
+
   .contact .locations {
     color: black;
     font-weight: 600;
   }
-  .contact-icons {
-    font-size: 1rem;
-    margin-right: 8px;
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 0;
+    color: black;
   }
-  .contact-icons.red { color: red; }
-  .contact-icons.green { color: green; }
+
+  .contact-item img {
+    width: 20px;
+    height: 20px;
+  }
+
   .floating-icons {
     position: fixed;
     bottom: 20px;
@@ -168,6 +208,7 @@
     flex-direction: column;
     gap: 10px;
   }
+
   .floating-icons a {
     background: #25D366;
     color: white;
@@ -177,8 +218,10 @@
     font-size: 18px;
     text-decoration: none;
   }
+
   .floating-icons a.email { background: #d93025; }
   .floating-icons a.linkedin { background: #0A66C2; }
+
   #backToTop {
     display: none;
     position: fixed;
@@ -193,6 +236,7 @@
     font-size: 22px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
   }
+
   .modal {
     display: none;
     position: fixed;
@@ -207,6 +251,7 @@
     justify-content: center;
     align-items: center;
   }
+
   .modal-content {
     background: white;
     padding: 20px;
@@ -214,12 +259,15 @@
     max-width: 500px;
     text-align: center;
   }
+
   .close {
     float: right;
     font-size: 24px;
     cursor: pointer;
   }
+
   @media (max-width: 768px) {
+    .hero-slider { height: 400px; }
     header {
       flex-wrap: nowrap;
       gap: 8px;
@@ -228,19 +276,17 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      line-height: 1;
-      gap: 0;
+      line-height: 1.1;
     }
     header h1 {
       font-size: 1rem;
       margin: 0;
-      white-space: nowrap;
     }
     header p {
       font-size: 0.8rem;
       margin: 0;
-      white-space: nowrap;
     }
+
     .nav-links {
       display: none;
       flex-direction: column;
@@ -252,17 +298,22 @@
       padding: 1em 0;
       z-index: 100;
     }
+
     .nav-links.show {
       display: flex;
     }
+
     #navToggle {
       display: block;
     }
+
     nav {
-      padding: 0.8em 1.5em;
+      justify-content: flex-start;
+      gap: 15px;
     }
-    .nav-links input[type="search"] {
-      margin: 10px auto;
+
+    .search-box {
+      margin-left: auto;
     }
   }
 </style>
@@ -284,8 +335,11 @@
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
-    <input type="search" id="searchInput" placeholder="Search..." />
   </div>
+  <form class="search-box" onsubmit="handleSearch(event)">
+    <input type="text" id="searchInput" placeholder="Search..." />
+    <button type="submit">Search</button>
+  </form>
 </nav>
 
 <!-- Hero slider -->
@@ -309,18 +363,18 @@
   <p>Supreme Info Consult – Ghana (SICG) is committed to enhancing the skills and impact of information professionals, including librarians, archivists, systems analysts, database administrators, and IT experts. We also provide basic IT training programs for tertiary and senior high school students.</p>
 </section>
 
-<section class="section" id="vision">
+<section class="section">
   <h2>Vision</h2>
   <p>To be a leading hub for empowering information professionals and students in Ghana and beyond</p>
 </section>
 
-<section class="section" id="mission">
+<section class="section">
   <h2>Mission</h2>
   <p>To deliver practical consulting and training that builds skills, confidence, and innovation in libraries, archives, IT, and education</p>
 </section>
 
 <section class="section" id="services">
-  <h2>Training & Consulting Services</h2>
+  <h2>Consulting Services</h2>
   <div class="services">
     <div class="card">
       <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/library.png" alt="Library Management"></div>
@@ -371,13 +425,22 @@
 
 <section class="section contact" id="contact">
   <h2>Contact Us</h2>
-  <p><i class="fa-solid fa-location-dot contact-icons red"></i><span class="locations">Accra, Kumasi & Sunyani, Ghana</span></p>
-  <p><i class="fa-solid fa-envelope contact-icons red"></i><a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
-  <p><i class="fa-brands fa-whatsapp contact-icons green"></i><a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
+  <div class="contact-item">
+    <img src="https://img.icons8.com/color/48/marker.png" alt="Location">
+    <span class="locations">Accra, Kumasi & Sunyani, Ghana</span>
+  </div>
+  <div class="contact-item">
+    <img src="https://img.icons8.com/color/48/new-post.png" alt="Email">
+    <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a>
+  </div>
+  <div class="contact-item">
+    <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp">
+    <a href="https://wa.me/233243221214">+233 24 322 1214</a>
+  </div>
 </section>
 
 <footer class="footer">
-  &copy; 2025 Supreme Info Consult – Ghana. Developed By: David Ameyaw (Systems Analyst). All rights reserved.
+  &copy; 2025 Supreme Info Consult – Ghana. All rights reserved. | Developed By: David Ameyaw (Systems Analyst)
 </footer>
 
 <div class="floating-icons">
@@ -399,6 +462,14 @@
 </div>
 
 <script>
+function handleSearch(event) {
+  event.preventDefault();
+  const query = document.getElementById('searchInput').value;
+  if (query) {
+    alert('You searched for: ' + query);
+  }
+}
+
 window.onload = function() {
   const slides = document.querySelectorAll('.hero-slider .slide');
   let currentIndex = 0;
@@ -430,11 +501,6 @@ window.onload = function() {
     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', !expanded);
     navLinks.classList.toggle('show');
-  });
-
-  // Search functionality
-  document.getElementById('searchInput').addEventListener('input', function() {
-    alert("You searched for: " + this.value);
   });
 };
 </script>
