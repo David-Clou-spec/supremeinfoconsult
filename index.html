@@ -63,9 +63,29 @@
     text-decoration: none;
     font-weight: 600;
   }
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .search-container input {
+    padding: 5px 8px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+  }
+  .search-container button {
+    background: white;
+    color: #6a1b9a;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
   .hero-slider {
     position: relative;
-    height: 300px;
+    height: 500px;
     overflow: hidden;
   }
   .hero-slider .slide {
@@ -234,6 +254,14 @@
     .nav-links.show {
       display: flex;
     }
+    .search-container {
+      padding: 0.5em 1em;
+      width: 100%;
+    }
+    .search-container input {
+      flex: 1;
+      width: 80%;
+    }
     #navToggle {
       display: block;
     }
@@ -255,17 +283,15 @@
 <nav>
   <button id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
   <div id="navLinks" class="nav-links">
-    <a href="#about">About</a>
+    <a href="#about">About Us</a>
     <a href="#services">Consulting Services</a>
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
-
-    <!-- Search form -->
-    <form id="searchForm" style="display:flex;align-items:center;gap:5px;">
-      <input type="text" id="searchInput" placeholder="Search..." style="padding:5px;border-radius:5px;border:none;" />
-      <button type="submit" style="padding:5px 10px;background:#fff;color:#6a1b9a;font-weight:bold;border:none;border-radius:5px;cursor:pointer;">Search</button>
-    </form>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search..." />
+      <button onclick="searchSite()">🔍</button>
+    </div>
   </div>
 </nav>
 
@@ -348,7 +374,7 @@
 </section>
 
 <footer class="footer">
-  &copy; 2025 Supreme Info Consult – Ghana | Accra • Kumasi • Sunyani. All rights reserved.
+  &copy; 2025 Supreme Info Consult – Ghana. Developed By: David Ameyaw (Systems Analyst). All rights reserved.
 </footer>
 
 <div class="floating-icons">
@@ -403,22 +429,14 @@ window.onload = function() {
     navLinks.classList.toggle('show');
   });
 
-  // Search functionality
-  document.getElementById('searchForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const text = document.getElementById('searchInput').value.trim();
-    if (!text) return;
-
-    const oldMarks = document.querySelectorAll('mark');
-    oldMarks.forEach(mark => {
-      const parent = mark.parentNode;
-      parent.replaceChild(document.createTextNode(mark.textContent), mark);
-      parent.normalize();
-    });
-
-    const regex = new RegExp(`(${text})`, 'gi');
-    document.body.innerHTML = document.body.innerHTML.replace(regex, '<mark style="background:yellow;">$1</mark>');
-  });
+  window.searchSite = function() {
+    const query = document.getElementById('searchInput').value;
+    if (query.trim()) {
+      alert("You searched for: " + query);
+    } else {
+      alert("Please enter a search term.");
+    }
+  }
 };
 </script>
 </body>
