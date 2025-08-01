@@ -55,34 +55,12 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1.2em;
-    align-items: center;
+    gap: 1.5em;
   }
   .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 600;
-  }
-  .search-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: white;
-    padding: 3px;
-    border-radius: 5px;
-  }
-  .search-container input {
-    border: none;
-    padding: 5px;
-    outline: none;
-  }
-  .search-container button {
-    background: #6a1b9a;
-    color: white;
-    border: none;
-    padding: 5px 8px;
-    border-radius: 4px;
-    cursor: pointer;
   }
   .hero-slider {
     position: relative;
@@ -127,7 +105,7 @@
   }
   .card {
     background: white;
-    padding: 1em;
+    padding: 1.5em;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     text-align: center;
@@ -152,15 +130,14 @@
     color: white;
     padding: 1em;
     text-align: center;
-    font-size: 0.9rem;
   }
   .contact a {
     color: #6a1b9a;
     text-decoration: none;
   }
-  .contact p img {
-    vertical-align: middle;
-    margin-right: 8px;
+  .contact .locations {
+    color: #6a1b9a;
+    font-weight: 600;
   }
   .floating-icons {
     position: fixed;
@@ -221,8 +198,38 @@
     font-size: 24px;
     cursor: pointer;
   }
+
+  /* MOBILE FIX */
   @media (max-width: 768px) {
-    .hero-slider { height: 400px; }
+    header {
+      flex-wrap: nowrap;
+      gap: 8px;
+    }
+    header img {
+      height: 40px;
+      width: 40px;
+    }
+    header div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 0;
+      line-height: 1.1;
+    }
+    header h1 {
+      font-size: 1rem;
+      margin: 0;
+      white-space: nowrap;
+    }
+    header p {
+      font-size: 0.75rem;
+      margin: 0;
+      white-space: nowrap;
+    }
+    .hero-slider {
+      height: 400px;
+    }
     .nav-links {
       display: none;
       flex-direction: column;
@@ -263,13 +270,10 @@
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search..." />
-      <button onclick="performSearch()">Search</button>
-    </div>
   </div>
 </nav>
 
+<!-- Hero slider -->
 <div class="hero-slider">
   <div class="slide" style="background-image:url('https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&cs=tinysrgb&w=1600');">
     Shaping Future Information Professionals
@@ -290,51 +294,41 @@
   <p>Supreme Info Consult – Ghana (SICG) is committed to enhancing the skills and impact of information professionals, including librarians, archivists, systems analysts, database administrators, and IT experts. We also provide basic IT training programs for tertiary and senior high school students.</p>
 </section>
 
-<section class="section" id="vision">
-  <h2>Vision</h2>
-  <p>To be a leading hub for empowering information professionals and students in Ghana and beyond.</p>
-</section>
-
-<section class="section" id="mission">
-  <h2>Mission</h2>
-  <p>To deliver practical consulting and training that builds skills, confidence, and innovation in libraries, archives, IT, and education.</p>
-</section>
-
 <section class="section" id="services">
   <h2>Consulting Services</h2>
   <div class="services">
     <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/library.png"></div>
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/library.png" alt="Library Management"></div>
       <h3>Library Administration & Management</h3>
       <p>Efficient administration of modern libraries.</p>
     </div>
     <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/books.png"></div>
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/books.png" alt="Collection Development"></div>
       <h3>Collection Development</h3>
       <p>Planning and building strong collections.</p>
     </div>
     <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/computer.png"></div>
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/computer.png" alt="Koha LMS"></div>
       <h3>Installation of Koha LMS</h3>
       <p>Setup and customization of Koha Library Management System.</p>
     </div>
     <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/documents.png"></div>
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/documents.png" alt="Cataloguing"></div>
       <h3>Cataloguing & Classification</h3>
       <p>Organizing information for easy discovery.</p>
     </div>
     <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/archive.png"></div>
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/archive.png" alt="Archives"></div>
       <h3>Archives & Records Management</h3>
       <p>Best practices in managing archival materials.</p>
     </div>
     <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/monitor.png"></div>
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/monitor.png" alt="IT Management"></div>
       <h3>IT Management</h3>
       <p>Manage and maintain ICT infrastructure effectively.</p>
     </div>
     <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/microsoft.png"></div>
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/microsoft.png" alt="Microsoft Office"></div>
       <h3>Microsoft Office Suite</h3>
       <p>Training in Word, Excel, and PowerPoint.</p>
     </div>
@@ -344,21 +338,21 @@
 <section class="section" id="training">
   <h2>Upcoming Training</h2>
   <div class="training-cards">
-    <div class="card"><h3>Cataloguing Workshop</h3><p><b>Date:</b> 15 Aug 2025<br><b>Venue:</b> Accra</p></div>
-    <div class="card"><h3>Archives Digitization</h3><p><b>Date:</b> 22 Aug 2025<br><b>Venue:</b> Sunyani</p></div>
-    <div class="card"><h3>Excel for Librarians</h3><p><b>Date:</b> 30 Aug 2025<br><b>Venue:</b> Kumasi</p></div>
+    <div class="card"><h3>Cataloguing Workshop</h3><p><b>Date:</b> 15 Aug 2025<br /><b>Venue:</b> Accra</p></div>
+    <div class="card"><h3>Archives Digitization</h3><p><b>Date:</b> 22 Aug 2025<br /><b>Venue:</b> Sunyani</p></div>
+    <div class="card"><h3>Excel for Librarians</h3><p><b>Date:</b> 30 Aug 2025<br /><b>Venue:</b> Kumasi</p></div>
   </div>
 </section>
 
 <section class="section contact" id="contact">
-  <h2>Contact Us</h2>
-  <p><img src="https://img.icons8.com/color/24/marker.png"/> <span class="locations">Accra, Kumasi & Sunyani, Ghana</span></p>
-  <p><img src="https://img.icons8.com/color/24/new-post.png"/> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
-  <p><img src="https://img.icons8.com/color/24/whatsapp--v1.png"/> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
+  <h2>Contact</h2>
+  <p>📍 <span class="locations">Accra, Kumasi & Sunyani, Ghana</span></p>
+  <p>✉ <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
+  <p>💬 <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
 </section>
 
 <footer class="footer">
-  &copy; 2025 Supreme Info Consult – Ghana. Developed By: David Ameyaw (Systems Analyst)
+  &copy; 2025 Supreme Info Consult – Ghana. All rights reserved. | Developed by: David Ameyaw (Systems Analyst)
 </footer>
 
 <div class="floating-icons">
@@ -404,24 +398,6 @@ window.onload = function() {
   window.addEventListener('click', e => {
     if (e.target == document.getElementById('execModal')) closeModal();
   });
-
-  // Search function
-  window.performSearch = () => {
-    const query = document.getElementById('searchInput').value.toLowerCase();
-    if (!query) {
-      alert("Please enter a search term.");
-      return;
-    }
-    const sections = document.querySelectorAll('section');
-    let found = false;
-    sections.forEach(section => {
-      if (section.innerText.toLowerCase().includes(query)) {
-        section.scrollIntoView({ behavior: 'smooth' });
-        found = true;
-      }
-    });
-    if (!found) alert("No results found for: " + query);
-  };
 
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
