@@ -56,15 +56,35 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5em;
+    align-items: center;
   }
   .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 600;
   }
+  .search-container {
+    display: flex;
+    align-items: center;
+  }
+  .search-container input {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+  }
+  .search-container button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    background: #f0e6f7;
+    color: #6a1b9a;
+    border-radius: 5px;
+    cursor: pointer;
+  }
   .hero-slider {
     position: relative;
-    height: 400px; /* enlarged */
+    height: 600px; /* Enlarged */
     overflow: hidden;
   }
   .hero-slider .slide {
@@ -96,6 +116,13 @@
   .section h2 {
     color: #6a1b9a;
     margin-bottom: 1em;
+  }
+  .vision-mission {
+    margin-top: 1em;
+  }
+  .vision-mission h3 {
+    color: #6a1b9a;
+    margin-bottom: 0.5em;
   }
   .services, .training-cards {
     display: grid;
@@ -239,6 +266,10 @@
     nav {
       padding: 0.8em 1.5em;
     }
+    .search-container {
+      margin-top: 10px;
+      justify-content: center;
+    }
   }
 </style>
 </head>
@@ -259,7 +290,10 @@
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
-    <a href="#search">Search</a>
+    <div class="search-container">
+      <input type="text" placeholder="Search..." />
+      <button>Search</button>
+    </div>
   </div>
 </nav>
 
@@ -282,23 +316,17 @@
 <section class="section" id="about">
   <h2>About Us</h2>
   <p>Supreme Info Consult – Ghana (SICG) is committed to enhancing the skills and impact of information professionals, including librarians, archivists, systems analysts, database administrators, and IT experts. We also provide basic IT training programs for tertiary and senior high school students.</p>
-</section>
 
-<!-- New Vision & Mission Section -->
-<section class="section" id="vision-mission">
-  <h2>Vision & Mission</h2>
-  <div class="card">
-    <h3>Our Vision</h3>
-    <p>To be a leading hub for empowering information professionals and students in Ghana and beyond.</p>
-  </div>
-  <div class="card" style="margin-top: 1.5em;">
-    <h3>Our Mission</h3>
-    <p>To deliver practical consulting and training that builds skills, confidence, and innovation in libraries, archives, IT, and education.</p>
+  <div class="vision-mission">
+    <h3>Vision</h3>
+    <p>To be a leading hub for empowering information professionals and students in Ghana and beyond</p>
+    <h3>Mission</h3>
+    <p>To deliver practical consulting and training that builds skills, confidence, and innovation in libraries, archives, IT, and education</p>
   </div>
 </section>
 
 <section class="section" id="services">
-  <h2>Consulting Services</h2>
+  <h2>Training & Consulting Services</h2>
   <div class="services">
     <div class="card">
       <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/library.png" alt="Library Management"></div>
@@ -355,7 +383,8 @@
 </section>
 
 <footer class="footer">
-  &copy; 2025 Supreme Info Consult – Ghana. All rights reserved. | Developed by: David Ameyaw (Systems Analyst)
+  &copy; 2025 Supreme Info Consult – Ghana. All rights reserved. <br>
+  Developed By: David Ameyaw (Systems Analyst)
 </footer>
 
 <div class="floating-icons">
