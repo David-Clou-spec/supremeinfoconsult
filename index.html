@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Supreme Info Consult – Ghana</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 <style>
   body {
     font-family: 'Poppins', sans-serif;
@@ -20,6 +19,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
   }
   header img {
     height: 50px;
@@ -42,7 +42,7 @@
     padding: 1em;
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   }
   #navToggle {
@@ -52,37 +52,34 @@
     border: none;
     color: white;
     cursor: pointer;
+    padding: 0 0.5em;
   }
   .nav-links {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 1.5em;
     align-items: center;
-    flex-wrap: wrap;
   }
   .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 600;
   }
-  .search-container {
-    display: flex;
-    align-items: center;
-  }
-  .search-container input {
-    padding: 5px;
-    font-size: 14px;
-  }
-  .search-container button {
-    padding: 6px 10px;
+  .nav-links input {
+    padding: 5px 10px;
+    border-radius: 4px;
     border: none;
-    background: #333;
-    color: white;
-    cursor: pointer;
   }
   .hero-slider {
     position: relative;
     height: 500px;
     overflow: hidden;
+  }
+  @media (max-width: 768px) {
+    .hero-slider {
+      height: 400px;
+    }
   }
   .hero-slider .slide {
     position: absolute;
@@ -99,12 +96,29 @@
     font-size: 2rem;
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-    text-align: center;
     padding: 0 1em;
+    text-align: center;
   }
   .hero-slider .slide.active {
     opacity: 1;
   }
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+  }
+  .slider-arrow.left { left: 20px; }
+  .slider-arrow.right { right: 20px; }
+  .slider-arrow:hover { background: rgba(0, 0, 0, 0.8); }
+
   .section {
     padding: 1em;
     max-width: 1000px;
@@ -112,8 +126,8 @@
   }
   .section h2 {
     color: #6a1b9a;
-    font-size: 1.4rem;
     margin-bottom: 0.5em;
+    font-size: 1.2rem;
   }
   .services, .training-cards {
     display: grid;
@@ -149,16 +163,16 @@
     text-align: center;
     font-size: 0.9rem;
   }
-  .footer p {
-    margin: 0.5em 0 0;
+  .disclaimer {
+    margin-top: 0.5em;
+    font-size: 0.8rem;
   }
-  .contact p {
-    margin: 0.5em 0;
-    font-size: 0.95rem;
+  .contact a {
+    text-decoration: none;
     color: black;
   }
-  .contact i {
-    margin-right: 8px;
+  .contact .locations, .contact .icons {
+    font-weight: 600;
   }
   .floating-icons {
     position: fixed;
@@ -191,35 +205,12 @@
     border-radius: 50%;
     cursor: pointer;
     font-size: 22px;
-  }
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    justify-content: center;
-    align-items: center;
-  }
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 500px;
-    text-align: center;
-  }
-  .close {
-    float: right;
-    font-size: 24px;
-    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
   }
   @media (max-width: 768px) {
-    .hero-slider { height: 400px; }
-    #navToggle { display: block; }
+    nav {
+      justify-content: flex-start;
+    }
     .nav-links {
       display: none;
       flex-direction: column;
@@ -229,11 +220,14 @@
       left: 0;
       right: 0;
       padding: 1em 0;
+      z-index: 100;
     }
-    .nav-links.show { display: flex; }
-    nav { flex-wrap: wrap; }
-    .search-container { width: 100%; padding: 0.5em; }
-    .search-container input { flex: 1; }
+    .nav-links.show {
+      display: flex;
+    }
+    #navToggle {
+      display: block;
+    }
   }
 </style>
 </head>
@@ -247,33 +241,32 @@
 </header>
 
 <nav>
-  <button id="navToggle">&#9776;</button>
+  <button id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
   <div id="navLinks" class="nav-links">
     <a href="#about">About Us</a>
     <a href="#services">Consulting Services</a>
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
-    <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
-  </div>
-  <div class="search-container">
-    <input type="text" placeholder="Search..." id="searchInput">
-    <button onclick="searchSite()">Search</button>
+    <a href="#execModal" onclick="openModal()">Executive Board</a>
+    <input type="text" id="searchBox" placeholder="Search...">
   </div>
 </nav>
 
 <div class="hero-slider">
-  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');">
-    Library Innovation
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1370297/pexels-photo-1370297.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    Library Excellence
   </div>
-  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1581090700227-4c4f86d2c2d5');">
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/279216/pexels-photo-279216.jpeg?auto=compress&cs=tinysrgb&w=1600');">
     Archives Excellence
   </div>
-  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c');">
-    IT Transformation
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1181352/pexels-photo-1181352.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    IT & Systems Innovation
   </div>
-  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1584697964154-f4e7b2f2f735');">
-    Training Workshops
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    Training Workshop
   </div>
+  <button class="slider-arrow left">&#10094;</button>
+  <button class="slider-arrow right">&#10095;</button>
 </div>
 
 <section class="section" id="about">
@@ -293,42 +286,31 @@
 
 <section class="section" id="services">
   <h2>Consulting Services</h2>
-  <div class="services">
-    <div class="card"><h3>Library Administration & Management</h3></div>
-    <div class="card"><h3>Collection Development</h3></div>
-    <div class="card"><h3>Installation of Koha LMS</h3></div>
-    <div class="card"><h3>Cataloguing & Classification</h3></div>
-    <div class="card"><h3>Archives & Records Management</h3></div>
-    <div class="card"><h3>IT Management</h3></div>
-    <div class="card"><h3>Microsoft Office Suite</h3></div>
-  </div>
+  <!-- Add your service cards here -->
 </section>
 
 <section class="section" id="training">
   <h2>Upcoming Training</h2>
-  <div class="training-cards">
-    <div class="card"><h3>Cataloguing Workshop</h3><p><b>Date:</b> 15 Aug 2025 | Accra</p></div>
-    <div class="card"><h3>Archives Digitization</h3><p><b>Date:</b> 22 Aug 2025 | Sunyani</p></div>
-    <div class="card"><h3>Excel for Librarians</h3><p><b>Date:</b> 30 Aug 2025 | Kumasi</p></div>
-  </div>
+  <!-- Training cards -->
 </section>
 
 <section class="section contact" id="contact">
   <h2>Contact Us</h2>
-  <p><i class="fa-solid fa-location-dot" style="color:red;"></i> Accra, Kumasi & Sunyani, Ghana</p>
-  <p><i class="fa-solid fa-envelope" style="color:red;"></i> supremeinfoconsult@gmail.com</p>
-  <p><i class="fa-brands fa-whatsapp" style="color:green;"></i> +233 24 322 1214</p>
+  <p><span style="color:red;">📍</span> <span class="locations">Accra, Kumasi & Sunyani, Ghana</span></p>
+  <p><span style="color:red;">✉</span> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
+  <p><span style="color:green;">💬</span> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
 </section>
 
 <footer class="footer">
-  &copy; 2025 Supreme Info Consult – Ghana. All rights reserved.
-  <p>All content and activities on this site are managed solely by the SICG Officials.</p>
+  &copy; 2025 Supreme Info Consult – Ghana. All rights reserved.<br>
+  Developed By: David Ameyaw (Systems Analyst)
+  <div class="disclaimer">All content and activities on this site are managed solely by the SICG Officials.</div>
 </footer>
 
 <div class="floating-icons">
-  <a href="https://wa.me/233243221214"><i class="fa-brands fa-whatsapp"></i></a>
-  <a href="mailto:supremeinfoconsult@gmail.com" class="email"><i class="fa-solid fa-envelope"></i></a>
-  <a href="https://linkedin.com" class="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="https://wa.me/233243221214">💬</a>
+  <a href="mailto:supremeinfoconsult@gmail.com" class="email">✉</a>
+  <a href="https://linkedin.com" class="linkedin">in</a>
 </div>
 
 <button onclick="scrollToTop()" id="backToTop">↑</button>
@@ -337,21 +319,15 @@
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
     <h2>Executive Board</h2>
-    <p><b>President & Founder:</b> Mr. David Ameyaw</p>
-    <p>Mr. David Ameyaw has in-depth knowledge in information management.</p>
+    <p><b>President & Founder:</b> Mr. David Ameyaw – In-depth knowledge in Information Management</p>
   </div>
 </div>
 
 <script>
-function searchSite() {
-  const query = document.getElementById('searchInput').value.toLowerCase();
-  if (query) {
-    alert('Searching for: ' + query);
-  }
-}
 window.onload = function() {
   const slides = document.querySelectorAll('.hero-slider .slide');
   let currentIndex = 0;
+
   function showSlide(index) {
     slides.forEach((s, i) => s.classList.toggle('active', i === index));
   }
@@ -359,8 +335,16 @@ window.onload = function() {
     currentIndex = (currentIndex + 1) % slides.length;
     showSlide(currentIndex);
   }
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  }
+
   showSlide(currentIndex);
   setInterval(nextSlide, 7000);
+
+  document.querySelector('.slider-arrow.right').addEventListener('click', nextSlide);
+  document.querySelector('.slider-arrow.left').addEventListener('click', prevSlide);
 
   const backToTop = document.getElementById("backToTop");
   window.addEventListener('scroll', () => {
@@ -370,10 +354,24 @@ window.onload = function() {
 
   window.openModal = () => document.getElementById('execModal').style.display = 'flex';
   window.closeModal = () => document.getElementById('execModal').style.display = 'none';
-  window.addEventListener('click', e => { if (e.target == document.getElementById('execModal')) closeModal(); });
+  window.addEventListener('click', e => {
+    if (e.target == document.getElementById('execModal')) closeModal();
+  });
 
-  document.getElementById('navToggle').addEventListener('click', () => {
-    document.getElementById('navLinks').classList.toggle('show');
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', !expanded);
+    navLinks.classList.toggle('show');
+  });
+
+  // Simple search filter (placeholder functionality)
+  const searchBox = document.getElementById('searchBox');
+  searchBox.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      alert('Search for: ' + searchBox.value);
+    }
   });
 };
 </script>
