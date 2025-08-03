@@ -25,9 +25,6 @@
     height: 50px;
     width: 50px;
   }
-  header div {
-    line-height: 1.2;
-  }
   header h1 {
     font-size: 1.4rem;
     margin: 0;
@@ -37,49 +34,62 @@
     font-size: 0.9rem;
     color: #f0e6f7;
   }
+
+  /* NAVIGATION */
   nav {
-    background: green;
+    background: #90ee90; /* light green */
     padding: 1em;
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
   }
   #navToggle {
     display: none;
     font-size: 24px;
     background: none;
     border: none;
-    color: white;
+    color: black;
     cursor: pointer;
-    padding: 0 0.5em;
   }
   .nav-links {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5em;
-    align-items: center;
   }
   .nav-links a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-weight: 600;
   }
-  .nav-links input {
-    padding: 5px 10px;
-    border-radius: 4px;
-    border: none;
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
   }
+  .search-container input[type="text"] {
+    padding: 5px 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .search-container button {
+    background: #6a1b9a;
+    border: none;
+    color: white;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
   .hero-slider {
     position: relative;
     height: 500px;
     overflow: hidden;
-  }
-  @media (max-width: 768px) {
-    .hero-slider {
-      height: 400px;
-    }
   }
   .hero-slider .slide {
     position: absolute;
@@ -102,22 +112,6 @@
   .hero-slider .slide.active {
     opacity: 1;
   }
-  .slider-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 50%;
-  }
-  .slider-arrow.left { left: 20px; }
-  .slider-arrow.right { right: 20px; }
-  .slider-arrow:hover { background: rgba(0, 0, 0, 0.8); }
 
   .section {
     padding: 1em;
@@ -126,13 +120,13 @@
   }
   .section h2 {
     color: #6a1b9a;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.8em;
     font-size: 1.2rem;
   }
   .services, .training-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1em;
+    gap: 1.2em;
   }
   .card {
     background: white;
@@ -141,39 +135,35 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     text-align: center;
   }
-  .icon-circle {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: #6a1b9a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  }
   .icon-circle img {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
   }
+
   .footer {
     background: #6a1b9a;
     color: white;
     padding: 1em;
     text-align: center;
-    font-size: 0.9rem;
   }
-  .disclaimer {
-    margin-top: 0.5em;
-    font-size: 0.8rem;
+
+  .contact-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+    font-size: 1rem;
+    color: #000;
   }
-  .contact a {
-    text-decoration: none;
-    color: black;
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
   }
-  .contact .locations, .contact .icons {
-    font-weight: 600;
+  .contact-item img {
+    width: 20px;
+    height: 20px;
   }
+
   .floating-icons {
     position: fixed;
     bottom: 20px;
@@ -193,6 +183,7 @@
   }
   .floating-icons a.email { background: #d93025; }
   .floating-icons a.linkedin { background: #0A66C2; }
+
   #backToTop {
     display: none;
     position: fixed;
@@ -207,14 +198,12 @@
     font-size: 22px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
   }
+
   @media (max-width: 768px) {
-    nav {
-      justify-content: flex-start;
-    }
     .nav-links {
       display: none;
       flex-direction: column;
-      background: green;
+      background: #90ee90;
       position: absolute;
       top: 100%;
       left: 0;
@@ -247,133 +236,51 @@
     <a href="#services">Consulting Services</a>
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
-    <a href="#execModal" onclick="openModal()">Executive Board</a>
-    <input type="text" id="searchBox" placeholder="Search...">
+    <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
+  </div>
+  <div class="search-container">
+    <input type="text" placeholder="Search..." />
+    <button>🔍</button>
   </div>
 </nav>
 
-<div class="hero-slider">
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1370297/pexels-photo-1370297.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Library Excellence
-  </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/279216/pexels-photo-279216.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Archives Excellence
-  </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1181352/pexels-photo-1181352.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    IT & Systems Innovation
-  </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Training Workshop
-  </div>
-  <button class="slider-arrow left">&#10094;</button>
-  <button class="slider-arrow right">&#10095;</button>
-</div>
-
-<section class="section" id="about">
-  <h2>About Us</h2>
-  <p>Supreme Info Consult – Ghana (SICG) is committed to enhancing the skills and impact of information professionals, including librarians, archivists, systems analysts, database administrators, and IT experts. We also provide basic IT training programs for tertiary and senior high school students.</p>
-</section>
-
-<section class="section" id="vision">
-  <h2>Vision</h2>
-  <p>To be a leading hub for empowering information professionals and students in Ghana and beyond.</p>
-</section>
-
-<section class="section" id="mission">
-  <h2>Mission</h2>
-  <p>To deliver practical consulting and training that builds skills, confidence, and innovation in libraries, archives, IT, and education.</p>
-</section>
-
-<section class="section" id="services">
-  <h2>Consulting Services</h2>
-  <!-- Add your service cards here -->
-</section>
-
-<section class="section" id="training">
-  <h2>Upcoming Training</h2>
-  <!-- Training cards -->
-</section>
-
-<section class="section contact" id="contact">
-  <h2>Contact Us</h2>
-  <p><span style="color:red;">📍</span> <span class="locations">Accra, Kumasi & Sunyani, Ghana</span></p>
-  <p><span style="color:red;">✉</span> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
-  <p><span style="color:green;">💬</span> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
-</section>
-
-<footer class="footer">
-  &copy; 2025 Supreme Info Consult – Ghana. All rights reserved.<br>
-  Developed By: David Ameyaw (Systems Analyst)
-  <div class="disclaimer">All content and activities on this site are managed solely by the SICG Officials.</div>
-</footer>
-
-<div class="floating-icons">
-  <a href="https://wa.me/233243221214">💬</a>
-  <a href="mailto:supremeinfoconsult@gmail.com" class="email">✉</a>
-  <a href="https://linkedin.com" class="linkedin">in</a>
-</div>
-
-<button onclick="scrollToTop()" id="backToTop">↑</button>
-
-<div id="execModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2>Executive Board</h2>
-    <p><b>President & Founder:</b> Mr. David Ameyaw – In-depth knowledge in Information Management</p>
-  </div>
-</div>
-
+<!-- Scripts for slider and nav -->
 <script>
-window.onload = function() {
-  const slides = document.querySelectorAll('.hero-slider .slide');
-  let currentIndex = 0;
-
-  function showSlide(index) {
-    slides.forEach((s, i) => s.classList.toggle('active', i === index));
-  }
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-  }
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  showSlide(currentIndex);
-  setInterval(nextSlide, 7000);
-
-  document.querySelector('.slider-arrow.right').addEventListener('click', nextSlide);
-  document.querySelector('.slider-arrow.left').addEventListener('click', prevSlide);
-
-  const backToTop = document.getElementById("backToTop");
-  window.addEventListener('scroll', () => {
-    backToTop.style.display = window.scrollY > 50 ? "block" : "none";
-  });
-  window.scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  window.openModal = () => document.getElementById('execModal').style.display = 'flex';
-  window.closeModal = () => document.getElementById('execModal').style.display = 'none';
-  window.addEventListener('click', e => {
-    if (e.target == document.getElementById('execModal')) closeModal();
-  });
-
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => {
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', !expanded);
-    navLinks.classList.toggle('show');
-  });
-
-  // Simple search filter (placeholder functionality)
-  const searchBox = document.getElementById('searchBox');
-  searchBox.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      alert('Search for: ' + searchBox.value);
+  window.onload = function() {
+    const slides = document.querySelectorAll('.hero-slider .slide');
+    let currentIndex = 0;
+    function showSlide(index) {
+      slides.forEach((s, i) => s.classList.toggle('active', i === index));
     }
-  });
-};
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+    if (slides.length > 0) {
+      showSlide(currentIndex);
+      setInterval(nextSlide, 7000);
+    }
+
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 50 ? "block" : "none";
+    });
+    window.scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    window.openModal = () => document.getElementById('execModal').style.display = 'flex';
+    window.closeModal = () => document.getElementById('execModal').style.display = 'none';
+    window.addEventListener('click', e => {
+      if (e.target == document.getElementById('execModal')) closeModal();
+    });
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !expanded);
+      navLinks.classList.toggle('show');
+    });
+  };
 </script>
 </body>
 </html>
