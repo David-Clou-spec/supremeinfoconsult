@@ -38,9 +38,12 @@
     color: #f0e6f7;
   }
   nav {
-    background: #219C9C; /* Updated to Teal */
+    background: teal;
     padding: 1em;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   #navToggle {
     display: none;
@@ -53,7 +56,6 @@
   }
   .nav-links {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 1.5em;
   }
@@ -61,6 +63,25 @@
     color: white;
     text-decoration: none;
     font-weight: 600;
+  }
+  .search-container {
+    position: relative;
+  }
+  .search-container input {
+    padding: 5px 30px 5px 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+  }
+  .search-container button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
   }
   .hero-slider {
     position: relative;
@@ -88,24 +109,60 @@
   .hero-slider .slide.active {
     opacity: 1;
   }
+  .hero-slider .prev,
+  .hero-slider .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+  }
+  .hero-slider .prev { left: 20px; }
+  .hero-slider .next { right: 20px; }
+  .hero-slider .prev:hover,
+  .hero-slider .next:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  @media (max-width: 768px) {
+    .hero-slider { height: 400px; }
+    #navToggle { display: block; }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background: teal;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      padding: 1em 0;
+      z-index: 100;
+    }
+    .nav-links.show { display: flex; }
+  }
   .section {
-    padding: 1.2em;
+    padding: 1em;
     max-width: 1000px;
     margin: auto;
   }
   .section h2 {
     color: #6a1b9a;
-    margin-bottom: 0.6em;
-    font-size: 1.3rem;
+    margin-bottom: 0.5em;
+    font-size: 1.2rem;
   }
   .services, .training-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.2em;
+    gap: 1em;
   }
   .card {
     background: white;
-    padding: 1.5em;
+    padding: 1em;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     text-align: center;
@@ -130,89 +187,11 @@
     color: white;
     padding: 1em;
     text-align: center;
+    font-size: 0.9rem;
   }
-  .contact a {
-    color: black;
-    text-decoration: none;
-  }
-  .contact .locations {
-    color: black;
-    font-weight: 600;
-  }
-  .floating-icons {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .floating-icons a {
-    background: #25D366;
-    color: white;
-    border-radius: 50%;
-    padding: 10px;
-    text-align: center;
-    font-size: 18px;
-    text-decoration: none;
-  }
-  .floating-icons a.email { background: #d93025; }
-  .floating-icons a.linkedin { background: #0A66C2; }
-  #backToTop {
-    display: none;
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    background: #6a1b9a;
-    color: white;
-    border: none;
-    padding: 15px 18px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 22px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  }
-  @media (max-width: 768px) {
-    header {
-      flex-wrap: nowrap;
-      gap: 8px;
-    }
-    header div {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      line-height: 1.1;
-    }
-    header h1 {
-      font-size: 1rem;
-      margin: 0;
-    }
-    header p {
-      font-size: 0.8rem;
-      margin: 0;
-    }
-    .hero-slider { height: 400px; }
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      background: #219C9C;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      padding: 1em 0;
-      z-index: 100;
-    }
-    .nav-links.show {
-      display: flex;
-    }
-    #navToggle {
-      display: block;
-    }
-    nav {
-      padding: 0.8em 1.5em;
-    }
-  }
+  .footer small { display: block; margin-top: 0.3em; }
+  .contact-info { color: black; font-weight: 500; }
+  .contact-info img { width: 18px; height: 18px; margin-right: 8px; vertical-align: middle; }
 </style>
 </head>
 <body>
@@ -225,29 +204,28 @@
 </header>
 
 <nav>
-  <button id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+  <button id="navToggle">&#9776;</button>
   <div id="navLinks" class="nav-links">
-    <a href="#about">About</a>
+    <a href="#about">About Us</a>
     <a href="#services">Consulting Services</a>
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
-    <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
+    <a href="#exec">Executive Board</a>
+  </div>
+  <div class="search-container">
+    <input type="text" placeholder="Search..." id="searchBox">
+    <button onclick="performSearch()">🔍</button>
   </div>
 </nav>
 
 <div class="hero-slider">
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Shaping Future Information Professionals
-  </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Innovating Knowledge
-  </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Archives and Records Management
-  </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Skills for the Future
-  </div>
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=1600');">Library Administration</div>
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1600');">Archives & Records Management</div>
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/572056/pexels-photo-572056.jpeg?auto=compress&cs=tinysrgb&w=1600');">Koha LMS Deployment</div>
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1600');">IT Training & Innovation</div>
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/462235/pexels-photo-462235.jpeg?auto=compress&cs=tinysrgb&w=1600');">Microsoft Office Suite Skills</div>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
 </div>
 
 <section class="section" id="about">
@@ -269,31 +247,23 @@
   <h2>Consulting Services</h2>
   <div class="services">
     <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/library.png" alt="Library"></div>
-      <h3>Library Administration & Management</h3>
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/library.png" alt=""></div>
+      <h3>Library Administration</h3>
     </div>
     <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/books.png" alt="Collection Development"></div>
-      <h3>Collection Development</h3>
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/archive.png" alt=""></div>
+      <h3>Archives & Records</h3>
     </div>
     <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/computer.png" alt="Koha LMS"></div>
-      <h3>Installation of Koha LMS</h3>
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/computer.png" alt=""></div>
+      <h3>Koha LMS</h3>
     </div>
     <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/documents.png" alt="Cataloguing"></div>
-      <h3>Cataloguing & Classification</h3>
-    </div>
-    <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/archive.png" alt="Archives"></div>
-      <h3>Archives & Records Management</h3>
-    </div>
-    <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/monitor.png" alt="IT Management"></div>
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/monitor.png" alt=""></div>
       <h3>IT Management</h3>
     </div>
     <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/microsoft.png" alt="Microsoft Office"></div>
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/microsoft.png" alt=""></div>
       <h3>Microsoft Office Suite</h3>
     </div>
   </div>
@@ -308,35 +278,17 @@
   </div>
 </section>
 
-<section class="section contact" id="contact">
+<section class="section" id="contact">
   <h2>Contact Us</h2>
-  <p><img src="https://img.icons8.com/color/24/marker.png" /> <span class="locations">Accra, Kumasi & Sunyani, Ghana</span></p>
-  <p><img src="https://img.icons8.com/color/24/email.png" /> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
-  <p><img src="https://img.icons8.com/color/24/whatsapp.png" /> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
+  <p class="contact-info"><img src="https://img.icons8.com/fluency/48/marker.png" alt="">Accra, Kumasi & Sunyani, Ghana</p>
+  <p class="contact-info"><img src="https://img.icons8.com/fluency/48/email.png" alt="">supremeinfoconsult@gmail.com</p>
+  <p class="contact-info"><img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="">+233 24 322 1214</p>
 </section>
 
 <footer class="footer">
   &copy; 2025 Supreme Info Consult – Ghana. Developed By: David Ameyaw (Systems Analyst). All rights reserved.
-  <div style="margin-top:8px; font-size:0.9em;">
-    All content and activities on this site are managed solely by the SICG Officials.
-  </div>
+  <small>All content and activities on this site are managed solely by the SICG Officials.</small>
 </footer>
-
-<div class="floating-icons">
-  <a href="https://wa.me/233243221214">💬</a>
-  <a href="mailto:supremeinfoconsult@gmail.com" class="email">✉</a>
-  <a href="https://linkedin.com" class="linkedin">in</a>
-</div>
-
-<button onclick="scrollToTop()" id="backToTop">↑</button>
-
-<div id="execModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2>Executive Board</h2>
-    <p><b>President & Founder:</b> Mr. David Ameyaw – In-depth knowledge in Information Management</p>
-  </div>
-</div>
 
 <script>
 window.onload = function() {
@@ -349,28 +301,25 @@ window.onload = function() {
     currentIndex = (currentIndex + 1) % slides.length;
     showSlide(currentIndex);
   }
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  }
+  document.querySelector('.next').addEventListener('click', nextSlide);
+  document.querySelector('.prev').addEventListener('click', prevSlide);
   showSlide(currentIndex);
   setInterval(nextSlide, 7000);
-
-  const backToTop = document.getElementById("backToTop");
-  window.addEventListener('scroll', () => {
-    backToTop.style.display = window.scrollY > 50 ? "block" : "none";
-  });
-  window.scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  window.openModal = () => document.getElementById('execModal').style.display = 'flex';
-  window.closeModal = () => document.getElementById('execModal').style.display = 'none';
-  window.addEventListener('click', e => {
-    if (e.target == document.getElementById('execModal')) closeModal();
-  });
 
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => {
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', !expanded);
     navLinks.classList.toggle('show');
   });
+
+  window.performSearch = () => {
+    const query = document.getElementById('searchBox').value;
+    if (query) alert('You searched for: ' + query);
+  };
 };
 </script>
 </body>
