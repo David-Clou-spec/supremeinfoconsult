@@ -77,21 +77,31 @@
     font-weight: 600;
   }
   .search-container {
-    position: relative;
     display: flex;
     align-items: center;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
   }
   .search-container input {
-    padding: 5px 30px 5px 10px;
-    border-radius: 4px;
+    padding: 5px 10px;
     border: none;
+    outline: none;
+    flex: 1;
+    font-size: 14px;
   }
-  .search-container img {
-    position: absolute;
-    right: 8px;
+  .search-container .search-btn {
+    background: teal;
+    border: none;
+    cursor: pointer;
+    padding: 5px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .search-container .search-btn img {
     width: 18px;
     height: 18px;
-    pointer-events: none;
   }
   .hero-slider {
     position: relative;
@@ -115,6 +125,7 @@
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     padding: 0 1em;
     text-align: center;
+    will-change: opacity;
   }
   .hero-slider .slide.active {
     opacity: 1;
@@ -196,7 +207,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    z-index: 1000;
+    z-index: 1100;
   }
   .floating-social img {
     width: 36px;
@@ -262,14 +273,16 @@
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
     <div class="search-container">
       <input type="text" placeholder="Search..." />
-      <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon">
+      <button type="button" class="search-btn">
+        <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon">
+      </button>
     </div>
   </div>
 </nav>
 
 <!-- Hero slider -->
 <div class="hero-slider">
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/5794055/pexels-photo-5794055.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=1600');">
     Library Consulting & Training
   </div>
   <div class="slide" style="background-image:url('https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg?auto=compress&cs=tinysrgb&w=1600');">
@@ -399,6 +412,18 @@ window.onload = function() {
     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', !expanded);
     navLinks.classList.toggle('show');
+  });
+
+  // Search functionality
+  const searchBtn = document.querySelector('.search-btn');
+  const searchInput = document.querySelector('.search-container input');
+  searchBtn.addEventListener('click', () => {
+    const query = searchInput.value.trim();
+    if(query){
+      alert("You searched for: " + query);
+    } else {
+      alert("Please type something to search.");
+    }
   });
 };
 </script>
