@@ -69,11 +69,29 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5em;
+    align-items: center;
   }
   .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 600;
+  }
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .search-container input {
+    padding: 5px 30px 5px 10px;
+    border-radius: 4px;
+    border: none;
+  }
+  .search-container img {
+    position: absolute;
+    right: 8px;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
   }
   .hero-slider {
     position: relative;
@@ -174,7 +192,7 @@
   .floating-social {
     position: fixed;
     right: 20px;
-    bottom: 50%;
+    bottom: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -187,8 +205,8 @@
   #backToTop {
     display: none;
     position: fixed;
-    bottom: 80px;
-    right: 20px;
+    bottom: 20px;
+    right: 80px;
     background: #6a1b9a;
     color: white;
     border: none;
@@ -242,23 +260,26 @@
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
-    <input type="text" placeholder="Search..." style="padding:5px;border-radius:4px;border:none;" />
+    <div class="search-container">
+      <input type="text" placeholder="Search..." />
+      <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon">
+    </div>
   </div>
 </nav>
 
 <!-- Hero slider -->
 <div class="hero-slider">
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Library Administration
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/5794055/pexels-photo-5794055.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    Library Consulting & Training
   </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1647976/pexels-photo-1647976.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg?auto=compress&cs=tinysrgb&w=1600');">
     Archives & Records Management
   </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Koha LMS
-  </div>
   <div class="slide" style="background-image:url('https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    IT Setting and Microsoft Office
+    IT & Microsoft Office Training
+  </div>
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    Professional Workshops
   </div>
   <div class="slider-nav">
     <button id="prevSlide">&#10094;</button>
