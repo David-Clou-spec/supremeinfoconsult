@@ -57,6 +57,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
   }
   #navToggle {
     font-size: 24px;
@@ -65,23 +66,12 @@
     color: white;
     cursor: pointer;
     padding: 0 0.5em;
-    display: none; /* hidden by default */
+    display: none;
   }
   @media (max-width: 768px) {
     #navToggle {
-      display: block; /* show only on mobile */
+      display: block;
     }
-  }
-  #mobileSearchBtn {
-    background: none;
-    border: none;
-    margin-left: auto;
-    cursor: pointer;
-    display: none;
-  }
-  #mobileSearchBtn img {
-    width: 22px;
-    height: 22px;
   }
   .nav-links {
     display: flex;
@@ -102,6 +92,8 @@
     background: white;
     border-radius: 4px;
     overflow: hidden;
+    flex: 1;
+    max-width: 300px;
   }
   .search-container input {
     padding: 5px 10px;
@@ -235,9 +227,6 @@
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
   }
   @media (max-width: 768px) {
-    #mobileSearchBtn {
-      display: block;
-    }
     .hero-slider {
       height: 400px;
     }
@@ -257,6 +246,12 @@
     }
     nav {
       padding: 0.8em 1.5em;
+      flex-wrap: wrap;
+    }
+    .search-container {
+      order: 2;
+      flex: 1 1 100%;
+      max-width: 100%;
     }
   }
 </style>
@@ -272,21 +267,21 @@
 
 <nav>
   <button id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
-  <button type="button" id="mobileSearchBtn" class="search-btn">
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/search--v1.png" alt="Search">
-  </button>
+
+  <!-- Search bar moved out of menu -->
+  <div class="search-container" id="searchBar">
+    <input type="text" placeholder="Search..." />
+    <button type="button" class="search-btn">
+      <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon">
+    </button>
+  </div>
+
   <div id="navLinks" class="nav-links">
     <a href="#about">About Us</a>
     <a href="#services">Consulting Services</a>
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
-    <div class="search-container">
-      <input type="text" placeholder="Search..." />
-      <button type="button" class="search-btn">
-        <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon">
-      </button>
-    </div>
   </div>
 </nav>
 
@@ -418,7 +413,6 @@ window.onload = function() {
     navLinks.classList.toggle('show');
   });
 
-  // Search functionality (both buttons)
   const searchBtns = document.querySelectorAll('.search-btn');
   const searchInput = document.querySelector('.search-container input');
   searchBtns.forEach(btn => {
