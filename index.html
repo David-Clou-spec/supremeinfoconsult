@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 <style>
   body {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     background: #f9f9f9;
     color: #333;
@@ -15,62 +15,110 @@
   header {
     background: #6a1b9a;
     color: white;
-    padding: 0.8em 1.5em;
+    padding: 0.8em 1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+  header img {
+    height: 45px;
+    width: 45px;
+  }
+  header div {
+    line-height: 1.1;
+  }
+  header h1 {
+    font-size: 1.2rem;
+    margin: 0;
+    white-space: nowrap;
+  }
+  header p {
+    margin: 0;
+    font-size: 0.8rem;
+  }
+  @media (max-width: 768px) {
+    header {
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+    header h1 {
+      font-size: 1rem;
+    }
+    header p {
+      font-size: 0.75rem;
+    }
+  }
+  nav {
+    background: teal;
+    padding: 1em;
+    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
   }
-  header img {
-    height: 50px;
-    width: 50px;
-  }
-  header div {
-    line-height: 1.2;
-  }
-  header h1 {
-    font-size: 1.4rem;
-    margin: 0;
-  }
-  header p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #f0e6f7;
-  }
-  nav {
-    background: #2e7d32; /* Changed to green */
-    padding: 1em;
-    position: relative;
-  }
   #navToggle {
-    display: none;
     font-size: 24px;
     background: none;
     border: none;
     color: white;
     cursor: pointer;
     padding: 0 0.5em;
+    display: none;
+  }
+  @media (max-width: 768px) {
+    #navToggle {
+      display: block;
+    }
   }
   .nav-links {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5em;
+    align-items: center;
+    flex: 1;
   }
   .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 600;
   }
+  .search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    flex: 1;
+    max-width: 300px;
+  }
+  .search-container input {
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 14px;
+  }
+  .search-container .search-btn {
+    background: teal;
+    border: none;
+    cursor: pointer;
+    padding: 5px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .search-container .search-btn img {
+    width: 18px;
+    height: 18px;
+  }
   .hero-slider {
     position: relative;
     height: 500px;
     overflow: hidden;
-  }
-  @media (max-width: 768px) {
-    .hero-slider {
-      height: 400px;
-    }
   }
   .hero-slider .slide {
     position: absolute;
@@ -89,9 +137,29 @@
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     padding: 0 1em;
     text-align: center;
+    will-change: opacity;
   }
   .hero-slider .slide.active {
     opacity: 1;
+  }
+  .slider-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+  .slider-nav button {
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
   }
   .section {
     padding: 1em;
@@ -101,12 +169,12 @@
   .section h2 {
     color: #6a1b9a;
     margin-bottom: 0.5em;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
   .services, .training-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5em;
+    gap: 1em;
   }
   .card {
     background: white;
@@ -135,31 +203,20 @@
     color: white;
     padding: 1em;
     text-align: center;
+    font-size: 0.9rem;
   }
-  .floating-icons {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  .contact p {
+    margin: 0.3em 0;
   }
-  .floating-icons a {
-    background: #25D366;
-    color: white;
-    border-radius: 50%;
-    padding: 10px;
-    text-align: center;
-    font-size: 18px;
+  .contact span, .contact a {
+    color: black;
     text-decoration: none;
   }
-  .floating-icons a.email { background: #d93025; }
-  .floating-icons a.linkedin { background: #0A66C2; }
   #backToTop {
     display: none;
     position: fixed;
-    bottom: 80px;
-    right: 20px;
+    bottom: 20px;
+    right: 80px;
     background: #6a1b9a;
     color: white;
     border: none;
@@ -170,30 +227,13 @@
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
   }
   @media (max-width: 768px) {
-    header {
-      flex-wrap: nowrap;
-      gap: 8px;
-    }
-    header div {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      line-height: 1.1;
-    }
-    header h1 {
-      font-size: 1rem;
-      margin: 0;
-      white-space: nowrap;
-    }
-    header p {
-      font-size: 0.8rem;
-      margin: 0;
-      white-space: nowrap;
+    .hero-slider {
+      height: 400px;
     }
     .nav-links {
       display: none;
       flex-direction: column;
-      background: #2e7d32;
+      background: teal;
       position: absolute;
       top: 100%;
       left: 0;
@@ -204,11 +244,14 @@
     .nav-links.show {
       display: flex;
     }
-    #navToggle {
-      display: block;
-    }
     nav {
       padding: 0.8em 1.5em;
+      flex-wrap: wrap;
+    }
+    .search-container {
+      order: 2;
+      flex: 1 1 100%;
+      max-width: 100%;
     }
   }
 </style>
@@ -224,6 +267,15 @@
 
 <nav>
   <button id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+
+  <!-- Search bar moved out of menu -->
+  <div class="search-container" id="searchBar">
+    <input type="text" placeholder="Search..." />
+    <button type="button" class="search-btn">
+      <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon">
+    </button>
+  </div>
+
   <div id="navLinks" class="nav-links">
     <a href="#about">About Us</a>
     <a href="#services">Consulting Services</a>
@@ -233,18 +285,23 @@
   </div>
 </nav>
 
+<!-- Hero slider -->
 <div class="hero-slider">
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Shaping Future Information Professionals
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    Library Consulting & Training
   </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Innovating Knowledge
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    Archives & Records Management
   </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Capacity Building
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    IT & Microsoft Office Training
   </div>
   <div class="slide" style="background-image:url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Skills for the Future
+    Professional Workshops
+  </div>
+  <div class="slider-nav">
+    <button id="prevSlide">&#10094;</button>
+    <button id="nextSlide">&#10095;</button>
   </div>
 </div>
 
@@ -253,54 +310,100 @@
   <p>Supreme Info Consult – Ghana (SICG) is committed to enhancing the skills and impact of information professionals, including librarians, archivists, systems analysts, database administrators, and IT experts. We also provide basic IT training programs for tertiary and senior high school students.</p>
 </section>
 
+<section class="section" id="vision">
+  <h2>Vision</h2>
+  <p>To be a leading hub for empowering information professionals and students in Ghana and beyond</p>
+</section>
+
+<section class="section" id="mission">
+  <h2>Mission</h2>
+  <p>To deliver practical consulting and training that builds skills, confidence, and innovation in libraries, archives, IT, and education</p>
+</section>
+
 <section class="section" id="services">
   <h2>Consulting Services</h2>
   <div class="services">
-    <!-- Service cards remain same -->
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/library.png" alt=""></div>
+      <h3>Library Administration & Management</h3>
+      <p>Efficient administration of modern libraries.</p>
+    </div>
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/books.png" alt=""></div>
+      <h3>Collection Development</h3>
+      <p>Planning and building strong collections.</p>
+    </div>
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/computer.png" alt=""></div>
+      <h3>Installation of Koha LMS</h3>
+      <p>Setup and customization of Koha Library Management System.</p>
+    </div>
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/documents.png" alt=""></div>
+      <h3>Cataloguing & Classification</h3>
+      <p>Organizing information for easy discovery.</p>
+    </div>
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/archive.png" alt=""></div>
+      <h3>Archives & Records Management</h3>
+      <p>Best practices in managing archival materials.</p>
+    </div>
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/monitor.png" alt=""></div>
+      <h3>IT Management</h3>
+      <p>Manage and maintain ICT infrastructure effectively.</p>
+    </div>
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/microsoft.png" alt=""></div>
+      <h3>Microsoft Office Suite</h3>
+      <p>Training in Word, Excel, and PowerPoint.</p>
+    </div>
   </div>
 </section>
 
 <section class="section" id="training">
   <h2>Upcoming Training</h2>
   <div class="training-cards">
-    <!-- Training cards remain same -->
+    <div class="card"><h3>Cataloguing Workshop</h3><p><b>Date:</b> 15 Aug 2025<br /><b>Venue:</b> Accra</p></div>
+    <div class="card"><h3>Archives Digitization</h3><p><b>Date:</b> 22 Aug 2025<br /><b>Venue:</b> Sunyani</p></div>
+    <div class="card"><h3>Excel for Librarians</h3><p><b>Date:</b> 30 Aug 2025<br /><b>Venue:</b> Kumasi</p></div>
   </div>
 </section>
 
 <section class="section contact" id="contact">
   <h2>Contact Us</h2>
-  <p><b>Locations:</b> <span class="locations">Accra, Kumasi & Sunyani, Ghana</span></p>
-  <p><b>Email:</b> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
-  <p><b>WhatsApp:</b> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
+  <p><img src="https://img.icons8.com/color/30/marker.png" alt="Location"> <span>Accra, Kumasi & Sunyani, Ghana</span></p>
+  <p><img src="https://img.icons8.com/fluency/30/new-post.png" alt="Email"> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
+  <p><img src="https://img.icons8.com/color/30/whatsapp--v1.png" alt="WhatsApp"> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
 </section>
 
-<p style="text-align:center; font-size:0.9rem; color:#555;">
-  All content and activities on this site are managed solely by the SICG Officials.
-</p>
-
 <footer class="footer">
-  &copy; 2025 Supreme Info Consult – Ghana. Developed By: David Ameyaw (Systems Analyst). All rights reserved.
+  &copy; 2025 Supreme Info Consult – Ghana. All rights reserved.<br>
+  Developed By: David Ameyaw (Systems Analyst)<br>
+  Disclaimer: All content and activities on this site are managed solely by the SICG Officials.
 </footer>
+
+<button onclick="scrollToTop()" id="backToTop">↑</button>
 
 <script>
 window.onload = function() {
   const slides = document.querySelectorAll('.hero-slider .slide');
   let currentIndex = 0;
-  function showSlide(index) {
-    slides.forEach((s, i) => s.classList.toggle('active', i === index));
-  }
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-  }
+  const showSlide = index => slides.forEach((s, i) => s.classList.toggle('active', i === index));
+  const nextSlide = () => { currentIndex = (currentIndex + 1) % slides.length; showSlide(currentIndex); };
+  const prevSlide = () => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; showSlide(currentIndex); };
+  document.getElementById('nextSlide').addEventListener('click', nextSlide);
+  document.getElementById('prevSlide').addEventListener('click', prevSlide);
   showSlide(currentIndex);
   setInterval(nextSlide, 7000);
 
   const backToTop = document.getElementById("backToTop");
+  window.addEventListener('scroll', () => backToTop.style.display = window.scrollY > 50 ? "block" : "none");
   window.scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   window.openModal = () => document.getElementById('execModal').style.display = 'flex';
   window.closeModal = () => document.getElementById('execModal').style.display = 'none';
+  window.addEventListener('click', e => { if (e.target == document.getElementById('execModal')) closeModal(); });
 
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
@@ -308,6 +411,19 @@ window.onload = function() {
     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', !expanded);
     navLinks.classList.toggle('show');
+  });
+
+  const searchBtns = document.querySelectorAll('.search-btn');
+  const searchInput = document.querySelector('.search-container input');
+  searchBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const query = searchInput ? searchInput.value.trim() : "";
+      if(query){
+        alert("You searched for: " + query);
+      } else {
+        alert("Please type something to search.");
+      }
+    });
   });
 };
 </script>
