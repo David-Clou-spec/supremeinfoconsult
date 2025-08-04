@@ -56,22 +56,17 @@
     position: relative;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
     flex-wrap: wrap;
   }
   #navToggle {
+    display: none;
     font-size: 24px;
     background: none;
     border: none;
     color: white;
     cursor: pointer;
     padding: 0 0.5em;
-    display: none;
-  }
-  @media (max-width: 768px) {
-    #navToggle {
-      display: block;
-    }
   }
   .nav-links {
     display: flex;
@@ -79,7 +74,6 @@
     flex-wrap: wrap;
     gap: 1.5em;
     align-items: center;
-    flex: 1;
   }
   .nav-links a {
     color: white;
@@ -87,33 +81,20 @@
     font-weight: 600;
   }
   .search-container {
+    position: relative;
     display: flex;
     align-items: center;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-    flex: 1;
-    max-width: 300px;
   }
   .search-container input {
     padding: 5px 10px;
+    border-radius: 4px;
     border: none;
-    outline: none;
-    flex: 1;
-    font-size: 14px;
   }
-  .search-container .search-btn {
-    background: teal;
-    border: none;
+  .search-container img {
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
-    padding: 5px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .search-container .search-btn img {
-    width: 18px;
-    height: 18px;
   }
   .hero-slider {
     position: relative;
@@ -137,7 +118,6 @@
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     padding: 0 1em;
     text-align: center;
-    will-change: opacity;
   }
   .hero-slider .slide.active {
     opacity: 1;
@@ -216,7 +196,7 @@
     display: none;
     position: fixed;
     bottom: 20px;
-    right: 80px;
+    right: 20px;
     background: #6a1b9a;
     color: white;
     border: none;
@@ -244,15 +224,44 @@
     .nav-links.show {
       display: flex;
     }
+    #navToggle {
+      display: block;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+    }
     nav {
-      padding: 0.8em 1.5em;
-      flex-wrap: wrap;
+      justify-content: flex-end;
     }
     .search-container {
-      order: 2;
-      flex: 1 1 100%;
-      max-width: 100%;
+      flex: 1;
+      justify-content: flex-end;
+      margin-right: 10px;
     }
+  }
+  /* Gallery */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1em;
+    margin-top: 1em;
+  }
+  .gallery-item {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 0.5em;
+    text-align: center;
+  }
+  .gallery-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    height: 180px;
+    object-fit: cover;
+  }
+  .gallery-item p {
+    margin-top: 0.5em;
+    font-weight: bold;
   }
 </style>
 </head>
@@ -267,27 +276,23 @@
 
 <nav>
   <button id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
-
-  <!-- Search bar moved out of menu -->
-  <div class="search-container" id="searchBar">
-    <input type="text" placeholder="Search..." />
-    <button type="button" class="search-btn">
-      <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon">
-    </button>
-  </div>
-
   <div id="navLinks" class="nav-links">
     <a href="#about">About Us</a>
     <a href="#services">Consulting Services</a>
     <a href="#training">Training</a>
+    <a href="#resources">Resources</a>
     <a href="#contact">Contact</a>
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
+  </div>
+  <div class="search-container">
+    <input type="text" placeholder="Search..." />
+    <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon">
   </div>
 </nav>
 
 <!-- Hero slider -->
 <div class="hero-slider">
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1600');">
     Library Consulting & Training
   </div>
   <div class="slide" style="background-image:url('https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg?auto=compress&cs=tinysrgb&w=1600');">
@@ -370,10 +375,32 @@
   </div>
 </section>
 
+<section class="section" id="resources">
+  <h2>Our Resources</h2>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Flat Files" />
+      <p>Flat Files</p>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Super Computer" />
+      <p>Super Computer</p>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Books" />
+      <p>Books</p>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/667890/pexels-photo-667890.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Archival Repository" />
+      <p>Archival Repository</p>
+    </div>
+  </div>
+</section>
+
 <section class="section contact" id="contact">
   <h2>Contact Us</h2>
   <p><img src="https://img.icons8.com/color/30/marker.png" alt="Location"> <span>Accra, Kumasi & Sunyani, Ghana</span></p>
-  <p><img src="https://img.icons8.com/fluency/30/new-post.png" alt="Email"> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
+  <p><img src="https://img.icons8.com/color/30/filled-message.png" alt="Email"> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
   <p><img src="https://img.icons8.com/color/30/whatsapp--v1.png" alt="WhatsApp"> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
 </section>
 
@@ -411,19 +438,6 @@ window.onload = function() {
     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', !expanded);
     navLinks.classList.toggle('show');
-  });
-
-  const searchBtns = document.querySelectorAll('.search-btn');
-  const searchInput = document.querySelector('.search-container input');
-  searchBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const query = searchInput ? searchInput.value.trim() : "";
-      if(query){
-        alert("You searched for: " + query);
-      } else {
-        alert("Please type something to search.");
-      }
-    });
   });
 };
 </script>
