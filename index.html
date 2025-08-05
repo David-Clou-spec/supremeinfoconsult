@@ -81,7 +81,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1.5em;
-      margin-left: 30px; /* move nav tabs a bit right */
+      margin-left: 30px;
     }
 
     .nav-links a {
@@ -110,11 +110,6 @@
     }
 
     @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        align-items: center;
-      }
-
       .header-title-row {
         flex-direction: column;
         align-items: flex-start;
@@ -163,7 +158,55 @@
       }
     }
 
-    /* Retain the rest of your styles below */
+    .hero-slider {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .hero-slider .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      padding: 0 1em;
+      text-align: center;
+    }
+
+    .hero-slider .slide.active {
+      opacity: 1;
+    }
+
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+
+    .slider-nav button {
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+    }
   </style>
 </head>
 <body>
@@ -195,11 +238,37 @@
   </div>
 </nav>
 
-<!-- Keep your remaining HTML (hero slider, sections, footer, and scripts) unchanged -->
+<div class="hero-slider">
+  <div class="slide active" style="background-image: url('https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    Library Consulting & Training
+  </div>
+  <div class="slide" style="background-image: url('https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    Archives & Records Management
+  </div>
+  <div class="slide" style="background-image: url('https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    IT & Microsoft Office Training
+  </div>
+  <div class="slide" style="background-image: url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    Professional Workshops
+  </div>
+  <div class="slider-nav">
+    <button id="prevSlide">&#10094;</button>
+    <button id="nextSlide">&#10095;</button>
+  </div>
+</div>
 
-<!-- Example Script Area -->
 <script>
   window.onload = function () {
+    const slides = document.querySelectorAll('.hero-slider .slide');
+    let currentIndex = 0;
+    const showSlide = index => slides.forEach((s, i) => s.classList.toggle('active', i === index));
+    const nextSlide = () => { currentIndex = (currentIndex + 1) % slides.length; showSlide(currentIndex); };
+    const prevSlide = () => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; showSlide(currentIndex); };
+    document.getElementById('nextSlide').addEventListener('click', nextSlide);
+    document.getElementById('prevSlide').addEventListener('click', prevSlide);
+    showSlide(currentIndex);
+    setInterval(nextSlide, 7000);
+
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
     navToggle.addEventListener('click', () => {
