@@ -40,7 +40,7 @@
       padding: 1em;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       flex-wrap: wrap;
       position: relative;
     }
@@ -53,9 +53,14 @@
       cursor: pointer;
       padding: 0 0.5em;
     }
+    .nav-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5em;
+    }
     .nav-links {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       gap: 1.5em;
       align-items: center;
@@ -66,9 +71,9 @@
       font-weight: 600;
     }
     .search-container {
-      position: relative;
       display: flex;
       align-items: center;
+      margin-left: auto;
     }
     .search-container input {
       padding: 5px 10px;
@@ -236,16 +241,18 @@
 </header>
 <nav>
   <button id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
-  <div id="navLinks" class="nav-links">
-    <a href="#about">About Us</a>
-    <a href="#services">Consulting Services</a>
-    <a href="#training">Training</a>
-    <a href="#contact">Contact</a>
-    <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
-  </div>
-  <div class="search-container">
-    <input type="text" placeholder="Search..." />
-    <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon">
+  <div class="nav-group">
+    <div id="navLinks" class="nav-links">
+      <a href="#about">About Us</a>
+      <a href="#services">Consulting Services</a>
+      <a href="#training">Training</a>
+      <a href="#contact">Contact</a>
+      <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
+    </div>
+    <div class="search-container">
+      <input type="text" placeholder="Search..." />
+      <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon">
+    </div>
   </div>
 </nav>
 
@@ -286,8 +293,41 @@
 <section class="section" id="services">
   <h2>Consulting Services</h2>
   <div class="services">
-    <!-- Cards (as previously defined) -->
-    <!-- Omitted for brevity -->
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/library.png" alt=""></div>
+      <h3>Library Administration & Management</h3>
+      <p>Efficient administration of modern libraries.</p>
+    </div>
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/books.png" alt=""></div>
+      <h3>Collection Development</h3>
+      <p>Planning and building strong collections.</p>
+    </div>
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/computer.png" alt=""></div>
+      <h3>Installation of Koha LMS</h3>
+      <p>Setup and customization of Koha Library Management System.</p>
+    </div>
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/documents.png" alt=""></div>
+      <h3>Cataloguing & Classification</h3>
+      <p>Organizing information for easy discovery.</p>
+    </div>
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/archive.png" alt=""></div>
+      <h3>Archives & Records Management</h3>
+      <p>Best practices in managing archival materials.</p>
+    </div>
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/monitor.png" alt=""></div>
+      <h3>IT Management</h3>
+      <p>Manage and maintain ICT infrastructure effectively.</p>
+    </div>
+    <div class="card">
+      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/microsoft.png" alt=""></div>
+      <h3>Microsoft Office Suite</h3>
+      <p>Training in Word, Excel, and PowerPoint.</p>
+    </div>
   </div>
 </section>
 
@@ -313,10 +353,8 @@
   Disclaimer: All content and activities on this site are managed solely by the SICG Officials.
 </footer>
 
-<!-- Back to Top -->
 <button onclick="scrollToTop()" id="backToTop">↑</button>
 
-<!-- Executive Modal -->
 <div id="execModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;z-index:200;">
   <div style="background:#fff;padding:2em;border-radius:10px;max-width:600px;width:90%;text-align:center;">
     <h2>Executive Board</h2>
