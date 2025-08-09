@@ -66,6 +66,12 @@
     cursor: pointer;
     padding: 0 0.5em;
   }
+  /* Hide menu icon on desktop */
+  @media (min-width: 769px) {
+    #navToggle {
+      display: none;
+    }
+  }
   #mobileSearchBtn {
     background: none;
     border: none;
@@ -415,7 +421,6 @@ window.onload = function() {
     navLinks.classList.toggle('show');
   });
 
-  // Search functionality (both buttons)
   const searchBtns = document.querySelectorAll('.search-btn');
   const searchInput = document.querySelector('.search-container input');
   searchBtns.forEach(btn => {
