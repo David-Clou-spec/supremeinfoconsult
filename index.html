@@ -2,438 +2,143 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Supreme Info Consult – Ghana</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supreme Info Consult</title>
 <style>
   body {
-    font-family: 'Poppins', sans-serif;
     margin: 0;
-    background: #f9f9f9;
-    color: #333;
+    font-family: Arial, sans-serif;
   }
   header {
-    background: #6a1b9a;
+    background-color: #003366;
     color: white;
-    padding: 0.8em 1em;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: nowrap;
-  }
-  header img {
-    height: 45px;
-    width: 45px;
-  }
-  header div {
-    line-height: 1.1;
-  }
-  header h1 {
-    font-size: 1.2rem;
-    margin: 0;
-    white-space: nowrap;
-  }
-  header p {
-    margin: 0;
-    font-size: 0.8rem;
-  }
-  @media (max-width: 768px) {
-    header {
-      flex-direction: row;
-      justify-content: flex-start;
-      gap: 8px;
-    }
-    header h1 {
-      font-size: 1rem;
-    }
-    header p {
-      font-size: 0.75rem;
-    }
+    padding: 10px 20px;
+    position: relative;
   }
   nav {
-    background: teal;
-    padding: 1em;
-    position: relative;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+  }
+  .logo {
+    font-size: 1.5em;
+    font-weight: bold;
   }
   #navToggle {
-    font-size: 24px;
+    display: block;
     background: none;
     border: none;
+    font-size: 1.5em;
     color: white;
     cursor: pointer;
-    padding: 0 0.5em;
-  }
-  /* Hide menu icon on desktop */
-  @media (min-width: 769px) {
-    #navToggle {
-      display: none;
-    }
-  }
-  #mobileSearchBtn {
-    background: none;
-    border: none;
-    margin-left: auto;
-    cursor: pointer;
-    display: none;
-  }
-  #mobileSearchBtn img {
-    width: 22px;
-    height: 22px;
   }
   .nav-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5em;
-    align-items: center;
-    flex: 1;
+    display: none;
+    flex-direction: column;
+    background-color: #003366;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
   }
   .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .search-container {
-    display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .search-container input {
-    padding: 5px 10px;
-    border: none;
-    outline: none;
-    flex: 1;
-    font-size: 14px;
-  }
-  .search-container .search-btn {
-    background: teal;
-    border: none;
-    cursor: pointer;
-    padding: 5px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .search-container .search-btn img {
-    width: 18px;
-    height: 18px;
-  }
-  .hero-slider {
-    position: relative;
-    height: 500px;
-    overflow: hidden;
-  }
-  .hero-slider .slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-    padding: 0 1em;
-    text-align: center;
-    will-change: opacity;
-  }
-  .hero-slider .slide.active {
-    opacity: 1;
-  }
-  .slider-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    transform: translateY(-50%);
-    z-index: 10;
-  }
-  .slider-nav button {
-    background: rgba(0,0,0,0.5);
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
     padding: 10px;
-    border-radius: 50%;
-  }
-  .section {
-    padding: 1em;
-    max-width: 1000px;
-    margin: auto;
-  }
-  .section h2 {
-    color: #6a1b9a;
-    margin-bottom: 0.5em;
-    font-size: 1.2rem;
-  }
-  .services, .training-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1em;
-  }
-  .card {
-    background: white;
-    padding: 1.5em;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-  .icon-circle {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: #6a1b9a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  }
-  .icon-circle img {
-    width: 36px;
-    height: 36px;
-  }
-  .footer {
-    background: #6a1b9a;
-    color: white;
-    padding: 1em;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-  .contact p {
-    margin: 0.3em 0;
-  }
-  .contact span, .contact a {
-    color: black;
     text-decoration: none;
-  }
-  #backToTop {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 80px;
-    background: #6a1b9a;
     color: white;
-    border: none;
-    padding: 15px 18px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 22px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    text-align: center;
   }
-  @media (max-width: 768px) {
-    #mobileSearchBtn {
-      display: block;
-    }
-    .search-container {
-      display: none;
-    }
-    .hero-slider {
-      height: 400px;
+  .nav-links.show {
+    display: flex;
+  }
+  @media (min-width: 769px) {
+    #navToggle {
+      display: none; /* hide menu button on desktop */
     }
     .nav-links {
-      display: none;
-      flex-direction: column;
-      background: teal;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      padding: 1em 0;
-      z-index: 100;
-    }
-    .nav-links.show {
       display: flex;
+      flex-direction: row;
+      position: static;
+      width: auto;
+      background: none;
     }
-    nav {
-      padding: 0.8em 1.5em;
+    .nav-links a {
+      color: white;
+      padding: 0 10px;
     }
+  }
+  section {
+    padding: 20px;
+  }
+  footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  footer a {
+    color: white;
+    text-decoration: none;
+  }
+  footer img {
+    vertical-align: middle;
   }
 </style>
 </head>
 <body>
+
 <header>
-  <img src="logo.png" alt="Supreme Info Consult Logo" />
-  <div>
-    <h1>Supreme Info Consult – Ghana</h1>
-    <p>Talent Enhancement</p>
-  </div>
+  <nav>
+    <div class="logo">Supreme Info Consult</div>
+    <button id="navToggle">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </nav>
 </header>
 
-<nav>
-  <button id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
-  <button type="button" id="mobileSearchBtn" class="search-btn">
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/search--v1.png" alt="Search">
-  </button>
-  <div id="navLinks" class="nav-links">
-    <a href="#about">About Us</a>
-    <a href="#services">Consulting Services</a>
-    <a href="#training">Training</a>
-    <a href="#contact">Contact</a>
-    <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
-    <div class="search-container">
-      <input type="text" placeholder="Search..." />
-      <button type="button" class="search-btn">
-        <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon">
-      </button>
-    </div>
-  </div>
-</nav>
+<section id="home">
+  <h1>Welcome to Supreme Info Consult</h1>
+  <p>Your trusted partner in information and consultancy services.</p>
+</section>
 
-<!-- Hero slider -->
-<div class="hero-slider">
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Library Consulting & Training
-  </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Archives & Records Management
-  </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    IT & Microsoft Office Training
-  </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Professional Workshops
-  </div>
-  <div class="slider-nav">
-    <button id="prevSlide">&#10094;</button>
-    <button id="nextSlide">&#10095;</button>
-  </div>
-</div>
+<section id="services">
+  <h2>Our Services</h2>
+  <ul>
+    <li>Business Consultancy</li>
+    <li>IT Support</li>
+    <li>Training and Workshops</li>
+  </ul>
+</section>
 
-<section class="section" id="about">
+<section id="about">
   <h2>About Us</h2>
-  <p>Supreme Info Consult – Ghana (SICG) is committed to enhancing the skills and impact of information professionals, including librarians, archivists, systems analysts, database administrators, and IT experts. We also provide basic IT training programs for tertiary and senior high school students.</p>
+  <p>We are a team of professionals dedicated to delivering top-notch services in consultancy, IT solutions, and training.</p>
 </section>
 
-<section class="section" id="vision">
-  <h2>Vision</h2>
-  <p>To be a leading hub for empowering information professionals and students in Ghana and beyond</p>
-</section>
-
-<section class="section" id="mission">
-  <h2>Mission</h2>
-  <p>To deliver practical consulting and training that builds skills, confidence, and innovation in libraries, archives, IT, and education</p>
-</section>
-
-<section class="section" id="services">
-  <h2>Consulting Services</h2>
-  <div class="services">
-    <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/library.png" alt=""></div>
-      <h3>Library Administration & Management</h3>
-      <p>Efficient administration of modern libraries.</p>
-    </div>
-    <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/books.png" alt=""></div>
-      <h3>Collection Development</h3>
-      <p>Planning and building strong collections.</p>
-    </div>
-    <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/computer.png" alt=""></div>
-      <h3>Installation of Koha LMS</h3>
-      <p>Setup and customization of Koha Library Management System.</p>
-    </div>
-    <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/documents.png" alt=""></div>
-      <h3>Cataloguing & Classification</h3>
-      <p>Organizing information for easy discovery.</p>
-    </div>
-    <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/archive.png" alt=""></div>
-      <h3>Archives & Records Management</h3>
-      <p>Best practices in managing archival materials.</p>
-    </div>
-    <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/monitor.png" alt=""></div>
-      <h3>IT Management</h3>
-      <p>Manage and maintain ICT infrastructure effectively.</p>
-    </div>
-    <div class="card">
-      <div class="icon-circle"><img src="https://img.icons8.com/fluency/48/microsoft.png" alt=""></div>
-      <h3>Microsoft Office Suite</h3>
-      <p>Training in Word, Excel, and PowerPoint.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="training">
-  <h2>Upcoming Training</h2>
-  <div class="training-cards">
-    <div class="card"><h3>Cataloguing Workshop</h3><p><b>Date:</b> 15 Aug 2025<br /><b>Venue:</b> Accra</p></div>
-    <div class="card"><h3>Archives Digitization</h3><p><b>Date:</b> 22 Aug 2025<br /><b>Venue:</b> Sunyani</p></div>
-    <div class="card"><h3>Excel for Librarians</h3><p><b>Date:</b> 30 Aug 2025<br /><b>Venue:</b> Kumasi</p></div>
-  </div>
-</section>
-
-<section class="section contact" id="contact">
+<section id="contact">
   <h2>Contact Us</h2>
-  <p><img src="https://img.icons8.com/color/30/marker.png" alt="Location"> <span>Accra, Kumasi & Sunyani, Ghana</span></p>
-  <p><img src="https://img.icons8.com/fluency/30/email.png" alt="Email"> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
-  <p><img src="https://img.icons8.com/color/30/whatsapp--v1.png" alt="WhatsApp"> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
+  <p>
+    <img src="https://img.icons8.com/fluency/30/email.png" alt="Email"> 
+    supremeinfoconsult@gmail.com
+  </p>
+  <p>Phone: +233 123 456 789</p>
 </section>
 
-<footer class="footer">
-  &copy; 2025 Supreme Info Consult – Ghana. All rights reserved.<br>
-  Developed By: David Ameyaw (Systems Analyst)<br>
-  Disclaimer: All content and activities on this site are managed solely by the SICG Officials.
+<footer>
+  <p>&copy; 2025 Supreme Info Consult. All rights reserved.</p>
 </footer>
 
-<button onclick="scrollToTop()" id="backToTop">↑</button>
-
 <script>
-window.onload = function() {
-  const slides = document.querySelectorAll('.hero-slider .slide');
-  let currentIndex = 0;
-  const showSlide = index => slides.forEach((s, i) => s.classList.toggle('active', i === index));
-  const nextSlide = () => { currentIndex = (currentIndex + 1) % slides.length; showSlide(currentIndex); };
-  const prevSlide = () => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; showSlide(currentIndex); };
-  document.getElementById('nextSlide').addEventListener('click', nextSlide);
-  document.getElementById('prevSlide').addEventListener('click', prevSlide);
-  showSlide(currentIndex);
-  setInterval(nextSlide, 7000);
-
-  const backToTop = document.getElementById("backToTop");
-  window.addEventListener('scroll', () => backToTop.style.display = window.scrollY > 50 ? "block" : "none");
-  window.scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  window.openModal = () => document.getElementById('execModal').style.display = 'flex';
-  window.closeModal = () => document.getElementById('execModal').style.display = 'none';
-  window.addEventListener('click', e => { if (e.target == document.getElementById('execModal')) closeModal(); });
-
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
+  
   navToggle.addEventListener('click', () => {
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', !expanded);
     navLinks.classList.toggle('show');
   });
-
-  const searchBtns = document.querySelectorAll('.search-btn');
-  const searchInput = document.querySelector('.search-container input');
-  searchBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const query = searchInput ? searchInput.value.trim() : "";
-      if(query){
-        alert("You searched for: " + query);
-      } else {
-        alert("Please type something to search.");
-      }
-    });
-  });
-};
 </script>
+
 </body>
 </html>
