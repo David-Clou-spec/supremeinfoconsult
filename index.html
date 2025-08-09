@@ -54,9 +54,11 @@
     background: teal;
     padding: 1em;
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
   #navToggle {
-    display: none;
     font-size: 24px;
     background: none;
     border: none;
@@ -64,16 +66,56 @@
     cursor: pointer;
     padding: 0 0.5em;
   }
+  #mobileSearchBtn {
+    background: none;
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+    display: none;
+  }
+  #mobileSearchBtn img {
+    width: 22px;
+    height: 22px;
+  }
   .nav-links {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5em;
+    align-items: center;
+    flex: 1;
   }
   .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 600;
+  }
+  .search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .search-container input {
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 14px;
+  }
+  .search-container .search-btn {
+    background: teal;
+    border: none;
+    cursor: pointer;
+    padding: 5px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .search-container .search-btn img {
+    width: 18px;
+    height: 18px;
   }
   .hero-slider {
     position: relative;
@@ -97,6 +139,7 @@
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     padding: 0 1em;
     text-align: center;
+    will-change: opacity;
   }
   .hero-slider .slide.active {
     opacity: 1;
@@ -171,24 +214,11 @@
     color: black;
     text-decoration: none;
   }
-  .floating-social {
-    position: fixed;
-    right: 20px;
-    bottom: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 1000;
-  }
-  .floating-social img {
-    width: 36px;
-    height: 36px;
-  }
   #backToTop {
     display: none;
     position: fixed;
-    bottom: 80px;
-    right: 20px;
+    bottom: 20px;
+    right: 80px;
     background: #6a1b9a;
     color: white;
     border: none;
@@ -199,6 +229,12 @@
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
   }
   @media (max-width: 768px) {
+    #mobileSearchBtn {
+      display: block;
+    }
+    .search-container {
+      display: none;
+    }
     .hero-slider {
       height: 400px;
     }
@@ -215,9 +251,6 @@
     }
     .nav-links.show {
       display: flex;
-    }
-    #navToggle {
-      display: block;
     }
     nav {
       padding: 0.8em 1.5em;
@@ -236,29 +269,37 @@
 
 <nav>
   <button id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+  <button type="button" id="mobileSearchBtn" class="search-btn">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/search--v1.png" alt="Search">
+  </button>
   <div id="navLinks" class="nav-links">
     <a href="#about">About Us</a>
     <a href="#services">Consulting Services</a>
     <a href="#training">Training</a>
     <a href="#contact">Contact</a>
     <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
-    <input type="text" placeholder="Search..." style="padding:5px;border-radius:4px;border:none;" />
+    <div class="search-container">
+      <input type="text" placeholder="Search..." />
+      <button type="button" class="search-btn">
+        <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon">
+      </button>
+    </div>
   </div>
 </nav>
 
 <!-- Hero slider -->
 <div class="hero-slider">
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Library Administration
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    Library Consulting & Training
   </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/1647976/pexels-photo-1647976.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg?auto=compress&cs=tinysrgb&w=1600');">
     Archives & Records Management
   </div>
-  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    Koha LMS
-  </div>
   <div class="slide" style="background-image:url('https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1600');">
-    IT Setting and Microsoft Office
+    IT & Microsoft Office Training
+  </div>
+  <div class="slide" style="background-image:url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+    Professional Workshops
   </div>
   <div class="slider-nav">
     <button id="prevSlide">&#10094;</button>
@@ -344,12 +385,6 @@
   Disclaimer: All content and activities on this site are managed solely by the SICG Officials.
 </footer>
 
-<div class="floating-social">
-  <a href="mailto:supremeinfoconsult@gmail.com"><img src="https://img.icons8.com/fluency/48/email.png" alt="Email"></a>
-  <a href="https://wa.me/233243221214"><img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp"></a>
-  <a href="https://www.linkedin.com"><img src="https://img.icons8.com/fluency/48/linkedin.png" alt="LinkedIn"></a>
-</div>
-
 <button onclick="scrollToTop()" id="backToTop">↑</button>
 
 <script>
@@ -378,6 +413,20 @@ window.onload = function() {
     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', !expanded);
     navLinks.classList.toggle('show');
+  });
+
+  // Search functionality (both buttons)
+  const searchBtns = document.querySelectorAll('.search-btn');
+  const searchInput = document.querySelector('.search-container input');
+  searchBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const query = searchInput ? searchInput.value.trim() : "";
+      if(query){
+        alert("You searched for: " + query);
+      } else {
+        alert("Please type something to search.");
+      }
+    });
   });
 };
 </script>
