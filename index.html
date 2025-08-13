@@ -3,204 +3,170 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Supreme Info Consult - Ghana (SICG)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Supreme Info Consult - Information, Records, and Archival Consultancy in Ghana">
+  <title>Supreme Info Consult</title>
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: #f9f9f9;
-      color: #333;
+      padding: 0;
+      font-family: Arial, sans-serif;
     }
-    header {
-      background: #6a1b9a;
-      color: white;
-      padding: 1em 2em;
-      text-align: center;
+
+    body {
+      line-height: 1.6;
     }
+
     nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5em;
-      background: #7b1fa2;
+      background: teal;
       padding: 1em;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .hero {
-      background: url('https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress') no-repeat center/cover;
-      height: 300px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-      font-size: 2rem;
-      font-weight: bold;
-      text-align: center;
-      padding: 0 1em;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
+
+    .nav-links {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      gap: 1.5em;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    .search-container input {
+      padding: 5px;
+      border: none;
+      border-radius: 3px;
+    }
+
+    .search-container img {
+      width: 20px;
+      height: 20px;
+      margin-left: 5px;
+    }
+
+    .hero-slider {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .hero-slider img {
+      width: 100%;
+      height: auto;
+      display: none;
+    }
+
+    .hero-slider img:first-child {
+      display: block;
+    }
+
     .section {
       padding: 2em;
-      max-width: 1000px;
-      margin: auto;
     }
+
     .section h2 {
-      color: #6a1b9a;
+      text-align: center;
       margin-bottom: 1em;
     }
-    .services, .training-cards {
+
+    .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5em;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1em;
     }
-    .card {
-      background: white;
-      padding: 1.5em;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+    .gallery-item img {
+      max-width: 100%;
+      border-radius: 8px;
+      height: 180px;
+      object-fit: cover;
     }
-    .footer {
-      background: #6a1b9a;
+
+    footer {
+      background: #333;
       color: white;
-      padding: 1em;
       text-align: center;
+      padding: 1em;
     }
-    .contact a {
-      color: #6a1b9a;
-      text-decoration: none;
-    }
-    @media (max-width: 600px) {
-      .hero {
-        font-size: 1.5rem;
-        height: 200px;
+
+    @media (max-width: 768px) {
+      .search-container {
+        width: 100%;
+        margin: 10px 0 0;
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <h1>Supreme Info Consult – Ghana (SICG)</h1>
-    <p>Empowering Information Professionals in Ghana and Beyond</p>
-  </header>
 
   <!-- Navigation -->
-  <nav id="navbar">
-    <a href="#about">About</a>
-    <a href="#executive-board" id="exec-tab" style="display:none;">Executive Board</a>
-    <a href="#services">Services</a>
-    <a href="#training">Training</a>
-    <a href="#contact">Contact</a>
+  <nav>
+    <div class="nav-links">
+      <a href="#about">About Us</a>
+      <a href="#services">Consulting Services</a>
+      <a href="#training">Training</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Contact</a>
+      <a href="javascript:void(0)" onclick="openModal()">Executive Board</a>
+    </div>
+
+    <div class="search-container">
+      <input type="text" placeholder="Search..." />
+      <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Search Icon" />
+    </div>
   </nav>
 
-  <!-- Hero Image Banner -->
-  <div class="hero">
-    Shaping Future Information Professionals
-  </div>
-
-  <!-- About Us Section -->
-  <section class="section" id="about">
-    <h2>About Us</h2>
-    <p>
-      Supreme Info Consult is dedicated to advancing the skills and impact of information professionals including librarians, archivists, IT experts, tertiary students, and senior high school (SHS) students. We provide capacity-building opportunities and relevant training to help them stay current in the evolving world of information management.
-    </p>
+  <!-- Hero Slider -->
+  <section class="hero-slider">
+    <img src="https://images.pexels.com/photos/256559/pexels-photo-256559.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Modern Library 1" />
+    <img src="https://images.pexels.com/photos/1370297/pexels-photo-1370297.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Modern Library 2" />
+    <img src="https://images.pexels.com/photos/289817/pexels-photo-289817.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Modern Library 3" />
   </section>
 
-  <!-- Executive Board Section -->
-  <section class="section" id="executive-board">
-    <h2>Executive Board</h2>
-    <div class="services">
-      <div class="card">
-        <h3>Ms. Victoria Aggor</h3>
-        <p>Founder (Training & Consulting Partner)</p>
+  <!-- Resources -->
+  <section class="section" id="resources">
+    <h2>Our Resources</h2>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/37347/office-files-paperwork-file-folders-37347.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Office Files" />
       </div>
-      <div class="card">
-        <h3>Mr. David Ameyaw</h3>
-        <p>Co - Founder (Systems Analyst)</p>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="IT Settings" />
       </div>
-      <div class="card">
-        <h3>Sena</h3>
-        <p>Secretary</p>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Packed Books" />
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/667890/pexels-photo-667890.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Records" />
       </div>
     </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="section" id="services">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="card">
-        <h3>📚 Cataloguing & Classification</h3>
-        <p>Training in modern cataloguing standards and classification techniques.</p>
-      </div>
-      <div class="card">
-        <h3>📦 Archives Management</h3>
-        <p>Comprehensive training in managing and digitizing archival materials.</p>
-      </div>
-      <div class="card">
-        <h3>🧭 Information Literacy</h3>
-        <p>Workshops to enhance critical thinking and online research skills.</p>
-      </div>
-      <div class="card">
-        <h3>💻 Microsoft Office Suite</h3>
-        <p>Hands-on training in Word, Excel, and PowerPoint.</p>
-      </div>
-      <div class="card">
-        <h3>🖥️ Basic IT Skills</h3>
-        <p>Build foundational digital and computing skills for beginners.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Training Section -->
-  <section class="section" id="training">
-    <h2>Upcoming Training</h2>
-    <div class="training-cards">
-      <div class="card">
-        <h3>Cataloguing Workshop</h3>
-        <p><strong>Date:</strong> 15th August 2025</p>
-        <p><strong>Venue:</strong> Accra</p>
-      </div>
-      <div class="card">
-        <h3>Archives Management & Digitization</h3>
-        <p><strong>Date:</strong> 22nd August 2025</p>
-        <p><strong>Venue:</strong> Sunyani</p>
-      </div>
-      <div class="card">
-        <h3>MS Excel for Librarians</h3>
-        <p><strong>Date:</strong> 30th August 2025</p>
-        <p><strong>Venue:</strong> Kumasi</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="section contact" id="contact">
-    <h2>Contact Us</h2>
-    <p><strong>Email:</strong> <a href="mailto:supremeinfoconsult@gmail.com">supremeinfoconsult@gmail.com</a></p>
-    <p><strong>WhatsApp:</strong> <a href="https://wa.me/233243221214">+233 24 322 1214</a></p>
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    &copy; 2025 Supreme Info Consult – Ghana (SICG). All rights reserved.
+  <footer>
+    <p>&copy; 2025 Supreme Info Consult. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript to show/hide Executive Board tab -->
   <script>
-    window.addEventListener('scroll', () => {
-      const execTab = document.getElementById('exec-tab');
-      if (window.scrollY > 100) {
-        execTab.style.display = 'inline';
-      } else {
-        execTab.style.display = 'none';
-      }
-    });
+    function openModal() {
+      alert('Executive Board modal will be added here.');
+    }
   </script>
+
 </body>
 </html>
